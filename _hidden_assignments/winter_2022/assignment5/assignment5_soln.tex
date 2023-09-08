@@ -1,0 +1,263 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass{article}
+\newcommand{\hwnumber}{5*}
+
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\abs}[1]{| #1 |}
+
+
+\usepackage{fullpage,amsthm,amsmath,amssymb}
+\usepackage{algorithm,algorithmic}
+\usepackage{mathtools}
+\usepackage{bbm,bm}
+\usepackage{enumerate}
+\usepackage{cancel}
+\usepackage{xspace}
+\usepackage[textsize=tiny,
+%disable
+]{todonotes}
+\newcommand{\todot}[1]{\todo[color=blue!20!white]{T: #1}}
+\newcommand{\todoc}[1]{\todo[color=orange!20!white]{Cs: #1}}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=black]{hyperref}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\usepackage[capitalize]{cleveref}
+
+
+\usepackage{comment}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\cX}{\mathcal{X}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\Exp}{\mathbb{E}}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator*{\1}{\mathbbm{1}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\V}{\mathbb V}
+\renewcommand{\P}[1]{P\left\{ #1 \right\}}
+\newcommand{\Prob}[1]{\mathbb{P}( #1 )}
+\newcommand{\real}{\mathbb{R}}
+\renewcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\EE}[1]{\E[#1]}
+\newcommand{\bfone}{\1}
+\newcommand{\one}[1]{\mathbb{I}\{#1\}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\0}{\mathbf{0}}
+\usepackage{xifthen}
+
+% total number of points that can be collected
+\newcounter{DocPoints} % counter reset to zero upon creation
+
+% counting points per question (not user facing)
+\newcounter{QuestionPoints} % counter reset to zero upon creation
+
+% Points for a subquestion of a question; 
+% Adds the points to the total for the question and the document.
+\newcommand{\points}[1]{%
+	\par\mbox{}\par\noindent\hfill {\bf #1 points}%
+	\addtocounter{DocPoints}{#1}
+	\addtocounter{QuestionPoints}{#1}
+}
+% Points for a question; call with no params if the question
+% had subquestions. In this case it prints the total for the question (see \points).
+% Otherwise call with the points that the question is worth.
+% In this case, the total is added to the document total.
+% It is a semantic error to call this with a non-empty parameter
+% when a question had subquestions with individual scores.
+\newcommand{\tpoints}[1]{        %
+	\ifthenelse{\isempty{#1}}%
+	{%
+	}%
+	{%
+		\addtocounter{DocPoints}{#1}
+		\addtocounter{QuestionPoints}{#1}
+	}													 %
+	\par\mbox{}\par\noindent\hfill {Total: \bf \arabic{QuestionPoints}\xspace points}\par\mbox{}\par\hrule\hrule
+	\setcounter{QuestionPoints}{0}
+}
+\newcommand{\tpoint}[1]{
+	\tpoints{#1}
+}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem*{assumption*}{Assumption}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem*{solution*}{Solution}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+\excludecomment{solution}
+%\excludecomment{solution*}
+
+\newcommand{\hint}{\noindent \textbf{Hint}:\xspace}
+
+
+\usepackage{hyperref}
+
+\newcommand{\epssub}{\delta}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\sA}{\mathcal{A}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{CMPUT 653: Theoretical Foundations of Reinforcement Learning, Winter 2021\\ Homework \#\hwnumber}}
+\end{center}
+
+\section*{Instructions}
+\textbf{Submissions}
+You need to submit a zip file, named {\tt p\hwnumber\_<name>.zip} 
+or {\tt p\hwnumber\_<name>.pdf} 
+where {\tt <name>} is your name.
+The zip file should include a report in PDF, typed up (we strongly encourage to use pdf\LaTeX) and the code that we asked for. Write your name on your solution.
+I provide a template that you are encouraged to use.
+You have to submit the zip file on the eclass website of the course.
+
+\textbf{Collaboration and sources}
+Work on your own. You can consult the problems with your classmates, use books
+or web, papers, etc.
+Also, the write-up must be your own and you must acknowledge all the
+sources (names of people you worked with, books, webpages etc., including class notes.) 
+Failure to do so will be considered cheating.  
+Identical or similar write-ups will be considered cheating as well.
+Students are expected to understand and explain all the steps of their proofs.
+
+\textbf{Scheduling}
+Start early: It takes time to solve the problems, as well as to write down the solutions. Most problems should have a short solution (and you can refer to results we have learned about to shorten your solution). Don't repeat calculations that we did in the class unnecessarily.
+
+\vspace{0.3cm}
+
+\textbf{Deadline:} April 6 at 11:55 pm
+
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\nS}{\mathrm{S}}
+\newcommand{\nA}{\mathrm{A}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ip}[1]{\langle #1 \rangle}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cP}{\mathcal{P}}
+
+\section*{Sufficient condition for policy gradients to exist}
+
+In
+\href{https://rltheory.github.io/lecture-notes/planning-in-mdps/lec16/}
+{Lecture 16} 
+it is stated that a sufficient condition for the differentiability of $x \mapsto J(\pi_x)$ at $x=\theta_0$ 
+in a finite MDP 
+is that for 
+$x\mapsto \pi_x(a|s)$ is continuously differentiable at $x=\theta_0$ for any $(s,a)$ pair.
+Our purpose here is to show that this is correct.
+
+We start with a
+more general sufficient condition that allows for infinite state and action spaces
+and would be applicable, for example, for LQR problems with the discounted total reward criterion.
+The next question will be concerned with the (simpler) finite case.
+
+\begin{question}
+Let $M = (\cS,\cA,P,r)$ be an MDP so that for any memoryless policy $\pi$, $q^\pi$ exists.
+For $x\in \mathbb{R}^d$ let $\pi_x$ be a memoryless policy.
+Let $\mu \in \cM_1(\cS)$ and for a memoryless policy let $J(\pi) = \mu v^\pi$.
+For $\mu'\in \cM_1(\cS)$ and bounded $q: \cS \times \cA \to \R$, 
+let $F(\mu',x,q) = \mu' M_{\pi_x} q$.
+Assume that for any fixed $\mu',q$, $F(\mu',\cdot,q)$ 
+ has continuous partial derivatives at $x=\theta_0\in \mathbb{R}^d$ 
+and that
+\begin{align*}
+(\mu',q) \mapsto \sum_{i=1}^d \frac{\partial}{\partial x_i} F(\mu',x,q)|_{x=\theta_0} e_i
+\end{align*}
+is continuous in a neighborhood of $( (1-\gamma)\tilde \nu_\mu^{\pi_{\theta_0}}, q^{\pi_{\theta_0}} )$
+(here $e_i$ is the $i$th vector in the standard Euclidean basis).
+ Then the following hold:
+\begin{enumerate}
+\item $x\mapsto J(\pi_x)$ is differentiable;
+\item the conditions of the policy gradient theorem are met.
+\end{enumerate}
+\tpoints{50}
+\end{question}
+\begin{solution*}
+We first show the second part.
+In particular, we show that 
+{\em (a)} $\theta \mapsto f_{\pi_\theta}'(\theta_0)$ exists and is continuous in a neighborhood of $\theta_0$ and {\em (b)} $g_{\pi_{\theta_0}}'(\theta_0)$ exists,
+ where
+\begin{align*}
+f_\pi(x) &= \tilde\nu_\mu^\pi M_{\pi_x} q^\pi\,,\\
+g_\pi(x) &=\tilde \nu_\mu^{\pi_x} v^\pi\,.
+\end{align*}
+Then, the policy gradient theorem itself shows that Part 1 is true.
+
+Let us start with Claim (a).
+Fix a memoryless policy $\pi$. 
+Since $q^\pi$ is bounded and $(1-\gamma)\nu_\mu^\pi\in \cM_1(\cS)$, 
+by our assumption
+the partial derivatives of $f_\pi(x)$ exist and are continuous.
+Hence, $f_\pi$ is differentiable and
+
+\begin{align*}
+\frac{d}{dx}
+\tilde\nu_\mu^\pi M_{\pi_x} q^\pi
+= 
+\sum_{i=1}^d
+\frac{\partial}{\partial x_i} \tilde\nu_\mu^\pi M_{\pi_x} q^\pi e_i\,.
+\end{align*}
+
+Since by assumption the right-hand side is continuous in a neighborhood 
+
+For $\theta$ in a neighborhood of $\theta_0$, we need that 
+$f_{\pi_\theta}$ is differentiable at $x=\theta_0$.
+Fix $\theta$.
+
+
+
+Claim (a) follows since by our assumption $x\mapsto \tilde \nu_\mu^{\pi_{\theta_0}} M_{\pi_x} q^{\pi_{\theta_0}}$ has continuous partial derivatives \todoc{really?} in a neighborhood of $\theta_0$,
+hence it is differentiable in a neighborhood of $\theta_0$.
+
+
+For brevity let $v = v^{\pi_{\theta_0}}$.
+We have
+\begin{align*}
+J(\pi_x) = 
+%\sum_{t\ge 0} \gamma^t \mu (P_{\pi_x))^t  M_\pi r.
+\end{align*}
+\qed\par\smallskip\hrule
+\end{solution*}
+
+
+%\begin{question}
+%\end{question}
+%\begin{solution*}
+%\qed\par\smallskip\hrule
+%\end{solution*}
+
+
+\bigskip
+\bigskip
+
+\noindent
+\textbf{
+Total for all questions: \arabic{DocPoints}}.
+Of this, $100$ are bonus marks (i.e., $100$ marks worth $100\%$ on this problem set).
+
+\end{document}
+
+
+
+

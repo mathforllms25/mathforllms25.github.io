@@ -1,0 +1,8 @@
+I"<p>Last time, we discussed the Fundamental Theorem of Dynamic Programming, which then lead to the efficient “value iteration” algorithm for finding the optimal value function.
+And then we could find the optimal policy by greedifying w.r.t. the optimal value function.
+In this lecture we will do two things:</p>
+<ol>
+  <li>Elaborate more on the the properties of value iteration as a way of obtaining near-optimal policies;</li>
+  <li>Discuss the computational complexity of planning in finite MDPs.</li>
+</ol>
+:ET

@@ -1,0 +1,11 @@
+I"›<p>In the
+<a href="/lecture-notes/planning-in-mdps/lec10/">last lecture</a>
+we saw that under \(q^*\) linear realizability,
+query-efficient fixed-horizon local planning with a constant suboptimality gap is intractable
+provided that there is no limit on the number of actions. In particular, the MDPs that were used to show intractability use $e^{\Theta(d)}$ actions, where $d$ is the dimension of the feature-map that realizes the optimal action-value function.
+At the end of the lecture, we also
+noted that intractabality also holds for undiscounted infinite horizon problems under
+\(v^*\) linear realizability in the regime when the number of actions scales linearly with $d$.
+In this lecture we further dissect \(v^*\) realizability, but return to the fixed horizon setting and we will consider the case when the number of actions is fixed.
+As it turns out, in this case, query-efficient local planning is possible.</p>
+:ET

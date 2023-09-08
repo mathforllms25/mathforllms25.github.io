@@ -1,0 +1,5 @@
+I"õ<p>In the
+<a href="/lecture-notes/planning-in-mdps/lec8/">lecture on approximate policy iteration</a>, we proved that
+for any MDP feature-map pair $(M,\phi)$ and any $\varepsilonâ€™&gt;0$ excess suboptimality target,
+with a total runtime of</p>
+:ET

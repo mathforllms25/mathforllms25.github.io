@@ -1,0 +1,6 @@
+I"<p>In this lecture we</p>
+<ol>
+  <li>formally define policy iteration and</li>
+  <li>show that with $\tilde O( \textrm{poly}(\mathrm{S},\mathrm{A}, \frac{1}{1-\gamma}))$ elementary arithmetic operations, it produces an <strong>optimal</strong> policy</li>
+</ol>
+:ET

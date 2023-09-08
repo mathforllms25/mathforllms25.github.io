@@ -1,0 +1,704 @@
+\documentclass{article}
+\newcommand{\hwnumber}{2}
+
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\abs}[1]{| #1 |}
+
+\usepackage{fullpage,amsthm,amsmath,amssymb}
+\usepackage{algorithm,algorithmic}
+\usepackage{mathtools}
+\usepackage{bbm,bm}
+\usepackage{enumerate}
+\usepackage{xspace}
+\usepackage[textsize=tiny,
+%disable
+]{todonotes}
+\newcommand{\todot}[1]{\todo[color=blue!20!white]{T: #1}}
+\newcommand{\todoc}[1]{\todo[color=orange!20!white]{Cs: #1}}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=black]{hyperref}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\one}[1]{\mathbb{I}_{\{#1\}}}
+\newcommand{\oneb}[1]{\mathbb{I}_{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\cZ}{\mathcal{Z}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\Exp}{\mathbf{E}}
+\DeclareMathOperator*{\1}{\mathbbm{1}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\bbP}{\mathbb P}
+\newcommand{\V}{\mathbb V}
+\renewcommand{\P}[1]{\bbP\left( #1 \right)}
+\newcommand{\Prob}[1]{\mathbb{P}( #1 )}
+\newcommand{\real}{\mathbb{R}}
+\renewcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\EE}[1]{\E[#1]}
+\newcommand{\bfone}{\1}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\0}{\mathbf{0}}
+\usepackage[capitalize]{cleveref}
+\usepackage{xifthen}
+
+% total number of points that can be collected
+\newcounter{DocPoints} % counter reset to zero upon creation
+
+% counting points per question (not user facing)
+\newcounter{QuestionPoints} % counter reset to zero upon creation
+
+% Points for a subquestion of a question; 
+% Adds the points to the total for the question and the document.
+\newcommand{\points}[1]{%
+	\par\mbox{}\par\noindent\hfill {\bf #1 points}%
+	\addtocounter{DocPoints}{#1}
+	\addtocounter{QuestionPoints}{#1}
+}
+% Points for a question; call with no params if the question
+% had subquestions. In this case it prints the total for the question (see \points).
+% Otherwise call with the points that the question is worth.
+% In this case, the total is added to the document total.
+% It is a semantic error to call this with a non-empty parameter
+% when a question had subquestions with individual scores.
+\newcommand{\tpoints}[1]{        %
+	\ifthenelse{\isempty{#1}}%
+	{%
+	}%
+	{%
+		\addtocounter{DocPoints}{#1}
+		\addtocounter{QuestionPoints}{#1}
+	}													 %
+	\par\mbox{}\par\noindent\hfill {Total: \bf \arabic{QuestionPoints}\xspace points}\par\mbox{}\par\hrule\hrule
+	\setcounter{QuestionPoints}{0}
+}
+\newcommand{\tpoint}[1]{
+	\tpoints{#1}
+}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem*{solution*}{Solution}
+
+\newcommand{\hint}{\noindent \textbf{Hint}:\xspace}
+
+\usepackage{hyperref}
+
+\newcommand{\epssub}{\delta}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\sA}{\mathcal{A}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{CMPUT 605: Theoretical Foundations of Reinforcement Learning, Winter 2023\\ Homework \#\hwnumber}}
+\end{center}
+
+\section*{Instructions}
+\textbf{Submissions}
+You need to submit a single PDF file, named {\tt p0\hwnumber\_<name>.pdf} where {\tt <name>} is your name.
+The PDF file should include your typed up solutions (we strongly encourage to use pdf\LaTeX). 
+Write your name in the title of your PDF file.
+We provide a \LaTeX template that you are encouraged to use.
+To submit your PDF file you should send the PDF file via private message to Vlad Tkachuk on Slack before the deadline.
+
+\textbf{Collaboration and sources}
+Work on your own. You can consult the problems with your classmates, use books
+or web, papers, etc.
+Also, the write-up must be your own and you must acknowledge all the
+sources (names of people you worked with, books, webpages etc., including class notes.) 
+Failure to do so will be considered cheating.  
+Identical or similar write-ups will be considered cheating as well.
+Students are expected to understand and explain all the steps of their proofs.
+
+\textbf{Scheduling}
+Start early: It takes time to solve the problems, as well as to write down the solutions. Most problems should have a short solution (and you can refer to results we have learned about to shorten your solution). Don't repeat calculations that we did in the class unnecessarily.
+
+\vspace{0.3cm}
+
+\textbf{Deadline:} February 12 at 11:55 pm
+
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\nS}{\mathrm{S}}
+\newcommand{\nA}{\mathrm{A}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ip}[1]{\langle #1 \rangle}
+
+\section*{Problems}
+
+\subsection*{Union bounds}
+\begin{question}
+Let $A_1,\dots,A_n$ be events of a probability space $(\Omega,\cF,\bbP)$. Note that finite (and actually discrete) sets are always equipped with the discrete $\sigma$-algebra (power set) unless otherwise specified.
+Show that the following hold:
+\begin{enumerate}
+\item Show that for any random variable $I$ taking values in $[n]$, $A_I$, which is naturally defined as $$A_I = \{ \omega\in \Omega\,:\, \omega \in A_{I(\omega)} \},$$ is an event.
+\points{5}
+\item Show that there exist a random variable $I$ taking values in $[n]$, such that $\Prob{A_I} = \Prob{\cup_{i=1}^n A_i}$.
+\points{10}
+\item Show that the first two claims hold even if $I$ takes values in $\{1,2,\dots\}$ and $(A_i)_{i=1,2,\dots}$ is a countably infinite sequence of events. (It suffices to explain which parts of the solution to the first two questions need to be changed.)
+\points{5}
+\end{enumerate}
+\tpoints{}
+\end{question}
+\begin{solution*}
+\mbox{}
+
+\begin{enumerate}
+\item
+We claim that 
+\begin{align}
+A_I = \cup_{i\in [n]} (\{ I=i \} \cap A_i)\,.
+\label{eq:aid}
+\end{align}
+Call the set on the LHS $B$.
+Now, if $\omega\in A_I$, then $\omega\in A_{I(\omega)}$. Let $i=I(\omega)$. 
+Then $\omega \in \{I=i\}$ and $\omega \in A_i$. Hence, $\omega \in \{I=i\} \cap A_i$, and also $\omega \in B$.
+Now, for every $i\in [n]$, $\{I=i\} \cap A_i$, the intersection of two events is an event (here, $\{I=i\}$ is an event, because $I$ is a random variable). The countable union of events is also an event, hence $B$ is an event.
+\item 
+Let $I(\omega) = n$ if $\omega\not\in \cup_i A_i$. Otherwise, let $I(\omega) = \min\{ i\in [n]\,:\, \omega\in A_i \}$. We claim that $I$ is a random variable.
+For $A\subset \Omega$, let $\chi_A$ be the characteristic (indicator) function of $A$: $\chi_A(\omega)=1$ if $\omega\in A$ and $\chi_A(\omega)=0$ otherwise.
+As it is immediate from the definition of random variables, $\chi_A$ is a random variable.
+Now note that 
+$$
+I = \min( J_1,\dots,J_n, n)
+$$
+where for $i\in [n]$,  $J_i = i \chi_{A_i} + (n+1) \chi_{A_i^c}$. Since the complement of an event is an event and linear combination of random variables gives random variables, $J_i$ for $i\in [n]$ are random variables. Constant functions are also random variables. The minimum of random variables is a random variable, too. Hence, $I$ is a random variable.
+
+Now, clearly, $A_I \subset \cup_{i\in [n]} A_i$ (this follows directly \eqref{eq:aid}).
+To show the reverse, assume that $\omega \in \cup_{i\in [n]} A_i$. Then, $\omega\in A_i$ for some $i\in [n]$. Let $i$ be the smallest index for which $\omega\in A_i$. Then, by its definition, $I(\omega)=i$ and thus $\omega \in \{I=i\} \cap A_i \subset A_I$ by \eqref{eq:aid}.
+
+Since $A_I = \cup_{i\in [n]} A_i$, they have the same probability.
+
+\item 
+  The first solution does not need to be changed, except for the obvious replacement of $[n]$ with $\mathbb{N}$.
+
+  The second solution will need to be updated. Specifically, $I$ can no longer be shown to be a random variable by using the alternate definition of  
+  $$
+  I = \min( J_1,\dots,J_n, n),
+  $$
+  since $n$ can be arbitrarily large now.
+
+  To fix this problem we first let $I(\omega) = 1$ if $\omega\not\in \cup_i A_i$ and now we will show that $I$ must be a random variable by showing that it satisfies the definiton of a measurable map.
+  We have that $I: \Omega \to \mathbb{N}$ and we claim that for any $b \in P(\mathbb{N})$ that $I^{-1}(b) \in \mathcal{F}$.
+  Note that $P(\mathbb{N})$ is a valid $\sigma$-algebra on the set $\mathbb{N}$ and is the largest possible $\sigma$-algebra on the set $\mathbb{N}$.
+  Thus, if we can show that $I$ is a $\mathcal{F}/P(\mathbb{N})$ measurable map, then we have shown that $I$ is also a $\mathcal{F}/\mathcal{G}$ measurable map for any $\mathcal{G}$ that is also a $\sigma$-algebra on $\mathbb{N}$. 
+  Since, for any $c \in \mathcal{G}$ we know that $c \in P(\mathbb{N})$.
+  To show that $I^{-1}(b) \in \mathcal{F}$ for any $b \in P(\mathbb{N})$ it will be sufficient to show that $I^{-1}(d) \in \mathcal{F}$ for any $d \in \mathcal{D}$, where $\mathcal{D}$ is a generator of $P(\mathbb{N})$. 
+  This is true due to the well known fact that the pre-image of set functions preserves set operations.
+  More precisely: for a set function $F: \mathbb{X} \to \mathbb{Y}$ and $B, B_i \subset \mathbb{Y}, \ i \in \mathbb{N}$ we have that
+  $$F^{-1}(\cup_i B_i) = \cup_i F^{-1}(B_i),$$
+  $$F^{-1}(\mathbb{Y} \backslash B) = \mathbb{X} \backslash F^{-1}(B).$$
+  Thus, the pre-images of elements of a generator can be used to construct the pre-image of any element in the $\sigma$-algebra generated by the generator.
+  The generator of $P(\mathbb{N})$ we choose is $\mathbb{N}$.
+  It is clear that $I^{-1}(i) = A_i \backslash \cup_{k=1}^{i-1} A_i$ for any $i \in \mathbb{N} \backslash 1$, and $I^{-1}(1) = A_1 \cup \left(\cup_i A_i\right)^c$.
+  Thus, since a $\sigma$-algebra is closed under countable unions, intersections and compliments (note that set subtraction can be written using intersection and complimentation), and $A_i \in \mathcal{F}, \ \forall i \in \mathbb{N}$, we have that $I^{-1}(i) \in \mathcal{F}$. 
+  Showing that $I$ is a random variable (measurable map).
+  No further changes need to be made.
+
+\end{enumerate}
+\end{solution*}
+
+\subsection*{Local planning revisited}
+In the next problem we consider the variant of local planner that uses a fresh sample in each call of function $q$.
+In particular, consider the following algorithm:
+
+\begin{enumerate}
+\item {\tt define q(k,s):}
+\item {\tt if k = 0 return [0 for a in A] \# base case}
+\item {\tt return [ r(s,a) + gamma/m * sum( [max(q(k-1,s')) for s' in C(k,s,a)] ) for a in A ]}
+\item {\tt end}
+\end{enumerate}
+
+Here, the lists {\tt C(k,s,a)}, which in what follows will be denoted by $C_k(s,a)$ are as usual: They are created independently of each other for each $(s,a)$ and $k$ and they have $m$ mutually independent elements, sampled from $P_a(s)$.
+In particular, $C_k(s,a) = [S_1'(k,s,a), \dots, S_m'(k,s,a)]$ where $(S_i'(k,s,a))\stackrel{\textrm{iid}}{\sim} P_a(s)$.
+The planner is used the same way as before: when asked for an action at state $s_0$, it returns $\arg\max_{a\in \cA} q(k,s_0)$ with an appropriate choice of $k$ (and $m$).
+
+
+Let $\hat T_k: \R^{\cS \times \cA} \to \R$ be defined by 
+\begin{align*}
+\hat T_k q (s,a) = r_a(s) + \frac{\gamma}{m} \sum_{s'\in C_k(s,a)} \max_{a'} q(s',a')\,.
+\end{align*}
+
+\begin{question}
+Assume that the rewards belong to the $[0,1]$ interval.
+Show that the following hold:
+\begin{enumerate}
+\item For $k\ge 0$, let $Q_k(s,\cdot)$ be the values returned by the call {\tt q(k,s)} with a particular value of $s$ and $k$. Show that $Q_k(s,\cdot) = \hat T_k \dots \hat T_1 \0 (s,\cdot)$.
+\points{5}
+\item Fix $H>0$. Define a sequence of sets $\cS_0,\dots,\cS_H$ with $|\cS_h| = O( (mA)^h)$ and $\cS_0 = \{s_0\}$ such that with $\delta_h = \norm{Q_h - q^*}_{\cS_{H-h}}$, the following hold for any $0\le h \le H$:
+\begin{enumerate}[(a)]
+\item If also $h>0$, $\delta_h \le \gamma \delta_{h-1} + \norm{ \hat T_h q^* - q^* }_{\cS_{H-h}}$;
+\points{5}
+\item If also $h<H$, $\cS_{H-h}$ is a function of $C_H$, \dots, $C_{h+1}$ only (and is not a function of $C_{h},\dots,C_1$).
+\points{5}
+\end{enumerate}
+\item Show that with probability $1-\zeta$, $\norm{ \hat T_h q^* - q^* }_{\cS_{H-h}}\le \frac{1}{1-\gamma} \sqrt{ \frac{\log(2|\cS_{H-h}||A|/\zeta)}{2m} }$\,.
+\points{10}
+\item Let $\pi$ be the policy induced by the modified planner. Give a bound on the suboptimality of $\pi$ (make it as tight as you can using the usual tools).
+\points{10}
+\item Compare the bound to the one we obtained for the case when the same sets are used in the algorithm throughout.
+\points{5}
+\item Bound the computational complexity of the algorithm; argue why one would call this the ``sparse lookahead tree approach''.
+\points{5}
+\end{enumerate}
+\tpoints{}
+\end{question}
+\begin{solution*}
+\mbox{}
+
+\begin{enumerate}
+\item We will show the result $Q_k(s,\cdot) = \hat T_k \dots \hat T_1 \0 (s,\cdot)$ by induction on $k$.
+First, the base case with $k=0$
+\begin{align*}
+  & Q_0(s, \cdot) = \text{{\tt q(0, s)}} = \0. & \text{Where $\0$ is a $|\cA|$ length vector of zeros} \\
+\end{align*}
+Now, assume that $Q_{k-1}(s,\cdot) = \hat T_{k-1} \dots \hat T_1 \0 (s,\cdot)$ holds. We show that $Q_{k}(s,\cdot) = \hat T_{k} \dots \hat T_1 \0 (s,\cdot)$ holds
+\begin{align*}
+  & Q_{k}(s, \cdot) = q(k, s) \\
+  &= \text{\tt [ r(s,a) + gamma/m * sum( [max(q(k-1,s')) for s' in C(k,s,a)] ) for a in A ]} \\
+  &= r_a(s) + \frac{\gamma}{m} \sum_{s' \in C_{k}(s,a)} \max_{a'} Q_{k-1}(s', a'), \ \forall a \in \cA \\
+  &= r_a(s) + \frac{\gamma}{m} \sum_{s' \in C_{k}(s,a)} \max_{a'} \left( \hat T_{k-1} \dots \hat T_1 \0 (s', a') \right), \ \forall a \in \cA \quad \text{By inductive assumption} \\
+  &= \hat T_k \hat T_{k-1} \dots \hat T_1 \0 (s, a), \ \forall a \in \cA \\
+  &= \hat T_k \dots \hat T_1 \0 (s, \cdot)
+\end{align*}
+\item As usual, let $C_k(s) = \cup_a C_k(s,a)$.
+We let $\cS_1 = \cup_{s\in \cS_0} C_H(s) (=C_H(s_0))$ and, more generally,
+for $i>0$, 
+ $\cS_i  = \cup_{s\in \cS_{i-1}} C_{H-i+1}(s)$.
+\begin{enumerate}[(a)]
+\item Let $h>0$. 
+%Use $\hat T_{h:}$ as an abbreviation to $\hat T_h \hat T_{h-1} \dots \hat T_1$.
+To show 
+$\delta_h \le \gamma \delta_{h-1} + \norm{ \hat T_h q^* - q^* }_{\cS_{H-h}}$,
+ note that, by the triangle inequality and the definition of $\hat T_h$,
+ \begin{align*}
+\delta_h 
+& = \norm{Q_h-q^*}_{\cS_{H-h}}\\
+& = \norm{ \hat T_h Q_{h-1}  - \hat T_h q^*}_{\cS_{H-h}} + 
+       \norm{ \hat T_h q^* - q^*}_{\cS_{H-h}}\,.
+\end{align*}
+For the first term,
+\begin{align*}
+\norm{ \hat T_h  Q_{h-1} - \hat T_h q^*}_{\cS_{H-h}}
+& \le
+\frac{\gamma}{m} \max_{s\in \cS_{H-h}, a\in \cA} 
+ \sum_{s'\in C_h(s,a)} | M Q_{h-1} (s') - v^*(s') | \\
+& \le
+\gamma\, \max_{s\in \cS_{H-h}, a\in \cA} 
+\max_{s'\in C_h(s,a)}
+| M Q_{h-1} (s') - v^*(s') | \\
+& =
+\gamma\,
+\max_{s\in \cS_{H-h+1}} 
+| M Q_{h-1} (s) - v^*(s) | \\
+& \le
+\gamma\,
+\norm{ Q_{h-1} (s) - q^*(s) }_{\cS_{H-h+1}}\,.
+\end{align*}
+\item This follows by induction starting with $h=H-1$. 
+Clearly, $\cS_1$ is a function of $C_H$ only.
+Assume that  we already established that for
+$0<h<H$, $\cS_{H-h}$ is a function of $C_H, \dots, C_{h+1}$ only.
+Then,
+by its definition,
+ $\cS_{H-(h-1)} = \cS_{H-h+1} = \cup_{s\in \cS_{H-h}} C_{H-(H-h)}(s) = \cup_{s\in \cS_{H-h}} C_h(s)$.
+And now, by the induction hypothesis, the claim follows:
+$\cS_{H-(h-1)}$ is a function of $C_H, \dots, C_{h+1}$ and $C_h$ only.
+\end{enumerate}
+ 
+\item Fix $h$.
+For a fixed state $s \in \mathcal{S}$ and a fixed action $a \in \mathcal{A}$, w.p. at least $1 - \zeta$,
+  \begin{align*}
+    \overbrace{\left| \hat{T}_h q^*(s, a) - q^*(s, a) \right|}^{\Delta_h(s,a):=}
+    &= \gamma \left| \frac{1}{m} \sum_{s' \in C_h(s, a)} v^*(s') - \gamma \langle P_a(s), v^* \rangle \right| \\
+    &< \gamma \|v^*\|_\infty \sqrt{\frac{\log(2 / \zeta)}{2m}} \tag*{(using Hoeffding's inequality)} \\
+    &\leq \underbrace{\frac{\gamma}{1 - \gamma} \sqrt{\frac{\log(2 / \zeta)}{2m}}}_{=:f(\zeta)}. \tag*{(since rewards lie in $[0, 1]$)}
+  \end{align*}
+
+We claim that w.p. at least $1 - \zeta$,
+\begin{align}
+  \left| \hat{T}_h q^*(s, a) - q^*(s, a) \right| < \frac{\gamma}{1 - \gamma} \sqrt{\frac{\log(2 \mathrm{A} |\mathcal{S}_{H-h}|/ \zeta)}{2m}}, \quad \text{for all } s\in \cS_{H-h}, a\in \cA.
+  \label{eq:tdpl}
+\end{align}
+To prove this, for $\cS'\subset \cS$ nonempty and
+$s\in \cS,a\in \cA$ we let
+\begin{align*}
+F_{s,a}(\cS') = \{ \Delta_h(s,a)\ge f(\zeta/(\nA|\cS'|)) \}\,.
+\end{align*}
+Display \eqref{eq:tdpl} is equivalent to 
+\begin{align*}
+\Prob{ \cup_{s\in \cS_{H-h},a\in \cA} F_{s,a}(\cS_{H-h}) } \le \zeta\,.
+\end{align*}
+To verify this inequality we use the law of total probability:
+\begin{align*}
+\Prob{ \cup_{s\in \cS_{H-h},a\in \cA} F_{s,a}(\cS_{H-h}) }
+&=
+\sum_{\cS"\subset \cS,\cS'\ne\emptyset}
+\Prob{ \cup_{s\in \cS_{H-h},a\in \cA} F_{s,a}(\cS_{H-h}), \cS_{H-h}=\cS' } \\
+&=
+\sum_{\cS"\subset \cS,\cS'\ne\emptyset}
+\Prob{ \cup_{s\in \cS',a\in \cA} F_{s,a}(\cS'), \cS_{H-h}=\cS' } \\
+&\stackrel{(*)}{=}
+\sum_{\cS"\subset \cS,\cS'\ne\emptyset}
+\Prob{ \cup_{s\in \cS',a\in \cA} F_{s,a}(\cS')} \Prob{ \cS_{H-h}=\cS' }   \\
+&\le
+\zeta \sum_{\cS"\subset \cS,\cS'\ne\emptyset}
+\Prob{ \cS_{H-h}=\cS' }    = \zeta\,,
+\end{align*}
+where the 
+equality marked with $(*)$ used that
+by part (b) of Q2 and the definitions,
+$\cS_{H-h}=\cS'$ and $\cup_{s\in \cS',a\in \cA} F_{s,a}(\cS')$ are independent (the latter only depends on $C_h$, the former only depends on $C_H,\cdots,C_{h+1}$, which are independent),
+and
+the 
+last inequality follows from a union bound.
+Indeed, for $\cS'\subset \cS$ nonemtpy,
+\begin{align*}
+\Prob{\cup_{s\in \cS',a\in \cA} F_{s,a}(\cS')}
+\le
+\sum_{s\in \cS',a\in \cA} \Prob{ F_{s,a}(\cS')}
+\le |\cS'| \nA \, \frac{\zeta}{\nA|\cS'|} = \zeta\,.
+\end{align*}
+
+Now, from \eqref{eq:tdpl} 
+we get that w.p. at least $1 - \zeta$,
+  \begin{align*}
+    \|\hat{T}_h q^* - q^*\|_{\mathcal{S}_{H-h}} &= \max_{s \in \mathcal{S}_{H-h} } \max_{a \in \mathcal{A}} \left| \hat{T}_h q^*(s, a) - q^*(s, a) \right| \\
+    &\leq \frac{\gamma}{1 - \gamma} \sqrt{\frac{\log(2 \mathrm{A} |\mathcal{S}_{H-h}|/ \zeta)}{2m}} \\
+    & \leq \frac{1}{1 - \gamma} \sqrt{\frac{\log(2 \mathrm{A} |\mathcal{S}_{H-h}|/ \zeta)}{2m}}.
+  \end{align*}
+  
+\item We first use the recurrence relation $\delta_h \leq \gamma \delta_{h-1} + \|\hat{T}_h q^* - q^*\|_{\cS_{H-h}}$ from Q2, to obtain an expression for $\delta_H := \|Q_H - q^*\|_{\cS_0} := \max_{a} |Q_H(s_0, a) - q^*(s_0, a)|$ as follows
+  \begin{align*}
+    \delta_H &\leq \gamma \delta_{H-1} + \|\hat{T}_H q^* - q^*\|_{\cS_{0}} \\
+    &\leq \gamma^2 \delta_{H-2} + \gamma \|\hat{T}_{H-1} q^* - q^*\|_{\cS_{1}} + \|\hat{T}_H q^* - q^*\|_{\cS_{0}} \\
+    & \;\; \vdots \\
+    &\leq \gamma^H \delta_0 + \sum_{k=0}^{H-1} \gamma^k \|\hat{T}_{H-k} q^* - q^*\|_{\cS_{k}} \\
+    &\leq \frac{\gamma^H}{1 - \gamma} + \sum_{k=0}^{H-1} \gamma^k \|\hat{T}_{H-k} q^* - q^*\|_{\cS_{k}}. \tag*{(since $\delta_0 := \|Q_0 - q^*\|_{\cS_H} = \|q^*\|_{\cS_H} \leq \frac{1}{1 - \gamma}$)}
+  \end{align*}
+
+  Using the result from Q3 with the fact that $|\cS_k| = (m\mathrm{A})^k$, we get that for a fixed $k$, w.p. $1 - \zeta$, $\|\hat{T}_{H-k} q^* - q^*\|_{\cS_{k}} \leq \frac{1}{1 - \gamma} \sqrt{\frac{\log(2 \mathrm{A} (m\mathrm{A})^{k} / \zeta)}{2m}}$. Now we can employ union bound over the index $0 \leq k \leq H-1$, in the equation for $\delta_H$ given above, to get w.p. $1 - \zeta$
+  \begin{align*}
+    \delta_H &= \max_{a} |Q_H(s_0, a) - q^*(s_0, a)| \leq \frac{\gamma^H}{1 - \gamma} + \frac{1}{1 - \gamma} \sum_{k=0}^{H-1} \gamma^k \sqrt{\frac{\log(2 H \mathrm{A} (m\mathrm{A})^{k} / \zeta)}{2m}} =: \Delta(m, H, \zeta),
+  \end{align*}
+
+  where the extra $H$ comes in the numerator comes from union bound over the index $0 \leq k \leq H-1$.\footnote{It might be possible to obtain a tighter bound by using separate $\zeta_k = x_k \zeta$, with $x_k$s found by solving the optimization problem $\min \sum_{k=0}^{H-1} \sqrt{\log(e_k / x_k)}$ subject to $\sum_{k=0}^{H-1} x_k = 1$. But maybe $x_k = 1/H$ is a good enough solution; at least it's super simple! Another choice could be $x_k = e_k \big/ \sum_{i=1}^{H} e_i$.}
+
+  From above equation we get that the policy induced by the local planner $\pi(s_0) = \arg \max_a Q_H(s_0, a)$ is $2 \Delta(m, H, \zeta)$-optimizing. Then using policy error bound II from Lecture 6, we get that $\pi$ is $\varepsilon(m, H, \zeta)$-optimal with $\varepsilon(m, H, \zeta)$ defined as
+  \begin{align*}
+    \frac{2 \Delta(m, H, \zeta) + 2 \zeta \|q^*\|_\infty}{1 - \gamma} &\leq \frac{2}{(1 - \gamma)^2} \left[ \gamma^H + \sum_{k=0}^{H-1} \gamma^k \sqrt{\frac{\log(2 H \mathrm{A} (m\mathrm{A})^{k} / \zeta)}{2m}} + \zeta \right] =: \varepsilon(m , H, \zeta).
+  \end{align*}
+
+\item The bound given in the lecture 6 was $\epsilon_\text{lec}(m,H,\zeta):=\frac{2}{(1-\gamma)^2} \left[\gamma^H + \frac{1}{1-\gamma} \sqrt{ \frac{\log\left(2n\mathrm{A}/\zeta\right)}{2m} } + \zeta \right]$ with $n = (m\mathrm{A})^H$. Therefore, we need to compare the two terms $T_1 = \sum_{k=0}^{H-1} \gamma^k \sqrt{\frac{\log(2 H \mathrm{A} (m\mathrm{A})^{k} / \zeta)}{2m}}$ and $T_2 = \frac{1}{1-\gamma} \sqrt{ \frac{\log(2\mathrm{A} (m\mathrm{A})^H /\zeta)}{2m} }$. It is likely that $T_1 \leq T_2$ in general, since for all but large $k$, $H (m\mathrm{A})^k \ll (m\mathrm{A})^H$. Thus, this bound is tighter than that given in the lecture. In fact, a quick calculation gives that one saves a factor of $H$ on setting $m$ this way.
+
+  We could obtain a bound, similar to the one obtained here, in the lecture if we don't use the relaxation $\| \hat T q^* - q^* \|_{\mathcal{S}_{H-h}} \leq \| \hat T q^* - q^* \|_{\mathcal{S}_{H-1}}$ while deriving the recurrence for $\delta_h$  (see lecture 6 notes) and in fact the bound then would save (an insignificant) $H$ in the logarithm.
+
+\item It is straightforward to see that the computational complexity of the algorithm is $O((m\mathrm{A})^H)$. If we use the result $\varepsilon(m, H, \zeta) \leq \epsilon_\text{lec}(m, H, \zeta)$, hypothesized in Q5, then the computation complexity is the same as given in lecture 6 notes with $m \geq m^*$ (Eq. 8 in the lecture 6 notes). A tighter analysis should also be possible.
+
+Paraphrasing from Kearns, Mansour, \& Ng (2002), this algorithm is based on the idea of sparse sampling. As we showed above, a randomly sampled look-ahead tree that covers only a fraction (given by the value $m^*$) of the full look-ahead tree suffices to compute near-optimal actions from any state $s_0$ of an MDP. Therefore, this approach is called a sparse-lookahead tree approach. Here, we can think of the computation as building out a lookahead tree of depth $H$ from $s_0$ and then using this tree to back-propagate action-values using value iteration.
+\end{enumerate}
+\end{solution*}
+
+\subsection*{Fitted Value Iteration}
+Assume that the rewards belong to the $[0,1]$ interval and fix the discount factor $\gamma$. Let $H_\gamma = 1/(1-\gamma)$.
+Assume we are given a feature map $\phi: \cS \times \cA \to \R^d$ which spans $\R^d$.
+Let $\cF = \{ f_\theta \,:\, 
+f_\theta(s,a) = \phi(s,a)^\top \theta, \theta \in \R^d \}$ be the span of the features.
+Let $C \subset \cZ:=\cS \times \cA$ be the set whose existence is guaranteed by the Kiefer-Wolfowitz theorem for the feature map $\phi$ and let $\rho: C \to [0,1]$ be the corresponding weighting function. In particular, $|C|\le d(d+1)/2$, $\sum_{z\in C} \rho(z)=1$ and with $G_\rho = \sum_{z\in C} \rho(z) \phi(z)\phi(z)^\top$, $\max_{z\in \cZ} \norm{\phi(z)}_{G_\rho^{-1}}\le \sqrt{d}$.
+
+For $k\ge 1$, $(s,a)\in \cS \times \cA$, let $C_k(s,a) = [S_1'(k,s,a),\dots,S_m'(k,s,a)]$ be so that all the $(C_k(s,a))_{k,s,a}$ are independent of each other, and for any $k,s,a$, $S_1'(k,s,a),\dots,S_m'(k,s,a) \stackrel{\textrm{iid}}{\sim} P_a(s)$.
+For $k\ge 1$ let $\hat T_k: \R^{\cS\times \cA} \to \R$ be defined by
+\begin{align*}
+(\hat T_k q)(s,a) = r_a(s) + \frac{\gamma}{m} \sum_{s'\in C_k(s,a)} Mq \, (s')\,.
+\end{align*}
+Further, let $\Pi: \R^{\cZ} \to \R$ be defined by $(\Pi f)(z) = \max(\min(f(z),H_\gamma),0)$: In words, $\Pi$ truncates the values of its argument to the $[0,H_\gamma]$ interval.
+
+Consider the following procedure, which we call fitted $q$ iteration (FQI).%
+\footnote{A terrible name.}
+\begin{enumerate}
+\item $\theta_0 = \0$
+\item {\tt for } $k=1,2,\dots,K$ {\tt do}
+\item $\qquad$ $\theta_k = \argmin_{\theta\in \R^d} \sum_{z\in C} \rho(z) (f_\theta(z)-(\hat T_k \Pi f_{\theta_{k-1}})(z))^2$
+\item {\tt return} $\theta_K$
+\end{enumerate}
+
+\newcommand{\epx}{\varepsilon_{\textrm{apx}}}
+%Let $\epx = \sup_{\theta} \inf_{\theta'} \norm{ \Pi f_{\theta'} - T \Pi f_{\theta} }_\infty$.
+Let $\epx = \sup_{\theta} \inf_{\theta'} \norm{  f_{\theta'} - T \Pi f_{\theta} }_\infty$.
+\begin{question}
+Prove that the following hold:
+\begin{enumerate}
+\item The computation cost of FQI is $O(K d^3 m A)$ and it needs $O(d^2)$ space (all in the \href{https://en.wikipedia.org/wiki/Random-access_machine}{RAM model of computation}). The query cost is $O(K d^2 m)$. Explain how you get the bounds.
+\points{5}
+\item Fix $k\ge 0$. 
+Let $q_k = \Pi f_{\theta_k}$. For $k>0$, let $\epsilon_k:\cZ \to R$ and $\theta_k^*\in \R^d$ 
+be such that 
+%$T q_{k-1}=\Pi f_{\theta_k^*}+\epsilon_k$ 
+$T q_{k-1}= f_{\theta_k^*}+\epsilon_k$ 
+and $\norm{\epsilon_k}_\infty \le \epx$. Show that $\epsilon_k$ and $\theta_k^*$ are well-defined (i.e., they exist).
+\points{10}
+\item Show that for any  $k\ge 1$, $0\le \zeta\le 1$, with probability at least $1-\zeta$,
+\begin{align*}
+\norm{q_k - T q_{k-1}}_\infty \le (1+\sqrt{d}) \epx + \sqrt{d} H_\gamma \sqrt{\frac{\log\left(\frac{2|C|}{\zeta}\right)}{2m}}\,.
+\end{align*}
+\points{10}
+\item Show that, on the same event as in the previous part, the policy $\pi$ that is greedy with respect to $q_K$ is $\delta$-optimal with 
+\begin{align*}
+\delta \le 2 H_\gamma^2
+\left\{
+(1+\sqrt{d}) \epx +
+ \gamma^K 
++ \sqrt{d} H_\gamma \sqrt{\frac{\log\left(\frac{2|C| K}{\zeta}\right)}{2m}} \right\}\,.
+\end{align*}
+\points{10}
+\item 
+Fix $\epsilon>0$.
+Argue that $K$, $m$ and $\zeta$ can be chosen
+as a polynomial function of $H_\gamma,d, 1/\epsilon$
+so that the {\emph expected} suboptimality of the policy $\pi$ is bounded by
+$2H_\gamma^2 (1+\sqrt{d})\epx + 2\epsilon$.  Show the choices you made.
+\points{5}
+\item Argue that with a query, runtime and space cost that is polynomial in $H_\gamma,d, 1/\epsilon,A$, 
+the procedure obtains a policy $\pi$ that is at most $\delta$-optimal with
+$\delta=2H_\gamma^2 (1+\sqrt{d})\epx + 2\epsilon$.
+\points{5}
+\item The MDP $\cM = (\cS,\cA,P,r,\gamma)$ is called linear in $\phi$ if it holds that with some $\theta_r\in \R^d$, $r_a(s) = f_{\theta_r}(s,a)$ holds for all $(s,a)$ and if for some $\mu:\cS \to \R^d$, 
+ for any $(s,a)$,
+$P_a(s,s') = \ip{\phi(s,a), \mu(s')}$. Show that if $\cM$ is linear in $\phi$ then $\epx = 0$.
+\points{10}
+\end{enumerate}
+\tpoints{}
+\end{question}
+\begin{solution*}
+\mbox{}
+
+\begin{enumerate}
+\item 
+Note that 
+\begin{align}
+\theta_k = G_{\rho}^{-1} \underbrace{\sum_{z\in C} \rho(z) \phi(z) Y_k(z)}_{=:B_k}\,,
+\label{eq:lstk}
+\end{align}
+where 
+$Y_k(z) = \hat T_k \Pi f_{\theta_{k-1}}(z)$.
+For $z$ fixed, $Y_k(z)$ can be computed in $O(m A d)$ steps.
+All $Y_k(\cdot)$ is computed in $O(|C|mA d) = O(d^3 m A)$ steps. Given these $O(d^2)$ values, $B_k\in \R^d$ can be calculated in time $O(|C|d) = O(d^3)$ and 
+thus the total cost of calculating $B_k$ is $O(d^3 m A)$.
+The matrix inverse $G_\rho^{-1}$ needs only to be computed once, at the cost of, say $O(d^3)$.
+The cost of matrix vector multiplication is $O(d^2)$.
+The total cost of calculating $\theta_k$ is dominated by $O(d^3 m A)$.
+Multiply this by $K$ to get the total cost of the procedure.
+
+For storage, one can invert a matrix in place. Besides the matrix $G_\rho^{-1}$, one needs to store only $d$-dimensional vectors.
+Hence, the storage cost is $O(d^2)$.
+
+The query complexity of calculating comes from the need to access $C_k(z)$ for $z\in C$. Hence, the query cost is $O(d^2 m)$.
+Multiply this by $K$ to get the total number of queries. 
+\item Choose $\theta_k^*$ 
+%as the minimizer of $\theta \mapsto g(\theta):=\norm{ T q_{k-1} - \Pi f_\theta }_\infty$. 
+as the minimizer of $\theta \mapsto g(\theta):=\norm{ T q_{k-1} -  f_\theta }_\infty$. 
+We argue that this exists. 
+%Let $V= [0,H_\gamma]^{\cS\times \cA}$.
+%and let $S:\R^d \to V$ be defined by 
+%$S(\theta)=\Pi f_\theta$. Note that $S$ is well-defined (the range is indeed $V$).
+%Define $G = \{ \Pi f_\theta \,:\, \theta\in \R^d \}$. This is a closed set since $S$ is continuous. 
+%Since $G\subset V$ and $V$ is obviously bounded, $G$ is also bounded.
+%It then follows that $G$ is compact.
+%Now,
+%\begin{align}
+%\inf_\theta 
+%\norm{ T q_{k-1} - \Pi f_\theta }_\infty
+%=
+%\inf_{g\in G}
+%\norm{ T q_{k-1} - g }_\infty\,.
+%\end{align}
+%Since $g \mapsto \norm{ T q_{k-1} - g }_\infty$ is continuous, $G$ is compact, the infimum in the right-hand side is taken at some point $g^*\in G$. Take $\theta_k^* \in S^{-1}(g^*)$.
+Indeed, $g$ is continuous and nonnegative. Hence, there exists a sequence $(\theta_i)_i$ such that $g(\theta_i)\to \inf_\theta g(\theta)$.
+Note that $G_\rho$ is full rank because $\phi$ spans $\R^d$.
+There are two cases: Either $\sup_i \norm{\theta_i}_{G_\rho}$ is finite, or it is infinite.
+If it is finite, by the completeness of $\R^d$, a subsequence of $\theta_i$ converges to a minimizer of $g$
+by the continuity of $g$.
+In the opposite case, from $\norm{\theta_i}_{G_\rho}^2 = \sum_{z\in C} \rho(z) f_{\theta_i}^2(z)$ we see that, $(f_{\theta_i}^2(z))_i$ must be unbounded for at least one $z\in C$. 
+Hence, for this $z$,
+\begin{align*}
+g(\theta_i)=\norm{f_{\theta_i} - T q_{k-1} }_\infty \ge |f_{\theta_i}(z)|-|T q_{k-1}(z)| \,.
+\end{align*}
+Hence,
+\begin{align*}
+\limsup_{i\to\infty} g(\theta_i) \ge \limsup_{i\to\infty} |f_{\theta_i}(z)|-|T q_{k-1}(z)|  = \infty\,,
+\end{align*}
+which contradict to that $\limsup_{i\to\infty} g(\theta_i) = \inf_{\theta} g(\theta) \le g(0) <\infty$.
+
+\item 
+We have 
+%\begin{align*}
+%\norm{q_k - T q_{k-1}}_\infty 
+%& =
+%\norm{ \Pi f_{\theta_k} - (\Pi f_{\theta_k^*} + \epsilon_k) }_\infty
+%\le
+%\norm{ \Pi f_{\theta_k} - \Pi f_{\theta_k^*}}_\infty + \epx\\
+%& \le
+%\norm{ f_{\theta_k} - f_{\theta_k^*}}_\infty + \epx
+%\leq 
+%\sqrt{d} \max_{z\in C} |\epsilon(z)| + \epx\,,
+%\end{align*}
+%where the first equality uses the definition of $\theta_k^*$ and $\epsilon_k$, the first inequality uses the triangle inequality and that by definition $\norm{\epsilon_k}_\infty \le \epx$,
+%the next inequality uses that truncating values to an interval can only decrease the max-norm distance,
+\begin{align*}
+\norm{q_k - T q_{k-1}}_\infty 
+& =
+\norm{ \Pi f_{\theta_k} - T q_{k-1}}_\infty \\
+& \le
+\norm{ f_{\theta_k} - (f_{\theta_k^*} + \epsilon_k) }_\infty\\
+&\le
+\norm{ f_{\theta_k} - f_{\theta_k^*}}_\infty + \epx\\
+& \le
+\norm{ f_{\theta_k} - f_{\theta_k^*}}_\infty + \epx\\
+& \leq 
+\sqrt{d} \max_{z\in C} |\epsilon(z)| + \epx\,,
+\end{align*}
+where the first equality uses the definition of $q_k$,
+the next inequality uses that $T q_{k-1}\in [0,1/(1-\gamma)]$, hence dropping the truncation can only increase the values (at the same place we also used the
+definition of $\theta_k^*$ and $\epsilon_k$).
+The next inequality uses the triangle inequality and that by definition $\norm{\epsilon_k}_\infty \le \epx$,
+and for 
+%
+%Since $Tq_{k-1}$ takes values in $[0,H_\gamma]$, $|q_k(z)- T q_{k-1}(z)|\le |f_{\theta_k}(z) - T q_{k-1}(z)|$ (if $f_{\theta_k}(z)$ takes values in $[0,H_\gamma]$, $f_{\theta_k}(z) = q_k(z)$; otherwise, clearly, the projection will just help to bring the projected value closer to the ``target'' which lies in this interval). Hence,
+%\begin{align*}
+%\norm{q_k - T q_{k-1}}_\infty \le \norm{f_{\theta_k} - (f_{\theta_k^*} + \epsilon_k)}_\infty \le \norm{f_{\theta_k} - f_{\theta_k^*}}_\infty + \epx \leq \sqrt{d} \max_{z\in C} |\epsilon(z)| + \epx\,,
+%\end{align*}
+%where for 
+the last inequality we use an appropriately defined function $\epsilon: C \to \R$.
+For the definition recall the corollary of Lecture 8 that states that $\norm{f_{\hat\theta}-f_\theta}_\infty \le \sqrt{d} \max_{z\in C} |\epsilon(z)|$ holds for $\hat\theta = G_\rho^{-1} \sum_{z\in Z} \rho(z) \phi(z) (f_\theta(z) + \epsilon(z))$.
+Now, recall the definition of $\theta_k$ from \eqref{eq:lstk}. 
+Writing
+\begin{align*}
+Y_k(z) = (T q_{k-1})(z) + \hat \epsilon(z) = f_{\theta_k^*}(z) + \hat \epsilon(z) + \epsilon_k(z)\,,
+\end{align*}
+where the first equality defines $\hat\epsilon(z)$, we see that above we can use $\epsilon(z) = \hat\epsilon(z) + \epsilon_k(z)$.
+Now, note from Hoeffding's inequality that with probability $1-\zeta$,
+\begin{align*}
+\max_{z\in C} |\hat\epsilon(z)| \le H_\gamma \sqrt{\frac{\log\left(\frac{2|C|}{\zeta}\right)}{2m}}\,,
+\end{align*}
+where we use that $\EE{Y_k(z)|q_{k-1}}=(T q_{k-1})(z)$ and that $S_1'(k,z),\dots,S_m'(k,z)$ are independent given $q_{k-1}$, hence,
+$(M q_{k-1}( S_j'(k,z))_j$ is an i.i.d. sequence, and it takes values in the interval $[0,H_\gamma]$. \todoc{this independence is not quite well explained.}
+We also have
+\begin{align*}
+|\epsilon(z)|\le \epx + H_\gamma \sqrt{\frac{\log\left(\frac{2|C|}{\zeta}\right)}{2m}}\,,
+\end{align*}
+Putting everything together gives the desired claim.
+
+\item Let $\delta_k = \norm{ q_k - q^* }_\infty$.
+For $k>0$ we have
+\begin{align*}
+\delta_k 
+\le  \norm{ q_k - T q_{k-1} }_\infty + \norm{ T q_{k-1} - T q^* }_\infty
+\le  \norm{ q_k - T q_{k-1} }_\infty + \gamma \norm{ q_{k-1} - q^* }_\infty
+\le  \norm{ q_k - T q_{k-1} }_\infty + \gamma \delta_{k-1}\,.
+\end{align*}
+Unfolding this and using $\delta_0 \le H_\gamma$,
+\begin{align*}
+\delta_K \le \gamma^K H_\gamma + H_\gamma \max_{1\le k \le K} \norm{ q_k - T q_{k-1} }_\infty \,.
+\end{align*}
+Taking a union bound over $k\in [K]$ and plugging in the bound from the previous item, we get
+\begin{align*}
+\delta_K 
+\le 
+H_\gamma \gamma^K + H_\gamma 
+\left\{ (1+\sqrt{d}) \epx + \sqrt{d} H_\gamma \sqrt{\frac{\log\left(\frac{2|C|K}{\zeta}\right)}{2m}} \right\}\,.
+\end{align*}
+Finally, by our policy error bound,
+\begin{align*}
+\delta \le 2 H_\gamma^2
+\left\{
+(1+\sqrt{d}) \epx +
+ \gamma^K +
+ \sqrt{d} H_\gamma \sqrt{\frac{\log\left(\frac{2|C|K}{\zeta}\right)}{2m}} \right\}\,.
+\end{align*}
+
+\item 
+Let $\hat \pi$ be the random policy computed by the algorithm.
+Let $\mathcal{E}$ be the event of the previous part.
+By the previous part, on $\mathcal{E}$,
+\begin{align*}
+v^* - v^{\hat \pi} \le \delta \boldsymbol{1}\,.
+\end{align*}
+Now, for any fixed $s\in \cS$, 
+\begin{align*}
+\EE{ v^*(s)-v^{\hat \pi}(s) } 
+&= \EE{ (v^*(s)-v^{\hat \pi}(s))\oneb{\cE} } + \EE{ (v^*(s)-v^{\hat \pi}(s))\oneb{\cE^c} }  \\
+&\le \EE{ \delta\oneb{\cE} } + \EE{H_\gamma \oneb{\cE^c} }  \\
+&= \delta \Prob{\cE} + H_\gamma \Prob{\cE^c}   \\
+&\le \delta + H_\gamma \zeta\,,
+\end{align*}
+where the last inequality used Q3.
+
+Now, from the result of Q4,
+  \begin{align*}
+    \delta +
+    H_\gamma\zeta
+    &\le 2 H_\gamma^2 (1 + \sqrt{d}) \epx + 2 \underbrace{H_\gamma^2  \left[ \gamma^K + \sqrt{d} H_\gamma \sqrt{\frac{\log \left(\frac{2|C|K}{\zeta} \right)}{2m}} + \frac{\zeta}{2H_\gamma} \right]}_{\leq \epsilon} \leq 2 H_\gamma^2 (1 + \sqrt{d}) \epx + 2 \epsilon.
+  \end{align*}
+
+  Letting each of the last three terms above to be less than $\epsilon/3$, we get the following conditions:
+  \begin{align*}
+    K &\geq \frac{\log\left(3 H_\gamma^2/\epsilon \right)}{\log(1 / \gamma)}, \\
+    \zeta &\leq 2\epsilon/(3H_\gamma), \quad \text{and} \\
+    m &\geq \frac{9 H_\gamma^6 d}{2 \epsilon^2} \Bigg[\log(2|C|) + \log K + \log \left(3 H_\gamma / (2\epsilon) \right) \Bigg].
+  \end{align*}
+
+  Recalling that $|C| \leq d(d+1)/2$ gives us the desired result.
+  
+\item From Q1, we know that the query cost $O(Kd^2m)$, the runtime complexity $O(Kd^3mA)$, and the space complexity $O(d^2)$ are all polynomial in $A, d, K$, and $m$. Therefore, the result follows from Q5, which shoes that both $K$ and $m$ themselves have polynomial dependence on $H_\gamma, d$, and $1/\epsilon$, and that policy is $\delta$-suboptimal with $\delta = 2H_\gamma^2 (1 + \sqrt{d})_{\epx} + 2 \epsilon$.
+  
+\item 
+It suffices to see that for any $q\in \R^{\cS \times \cA}$, $T q\in \cF_{\phi}$. Indeed, then for any $\theta$, $T\Pi f_\theta\in \cF_{\phi}$, which means that $\inf_{\theta'} \| f_{\theta'} - T \Pi f_{\theta} \|_\infty=0$.
+
+Fix now $q\in \R^{\cS\times \cA}$. Let $v = Mq$.
+Letting $Z\in \R^{d\times \nS}$ be defined using $Z(i,s') = \mu_i(s')$, notice that 
+for $P\in \R^{\nS \nA \times \nS}$ it holds that 
+$P =\Phi Z$ while $r = \Phi \theta_r$.
+Hence,
+\begin{align*}
+T q = r + \gamma P v  =\Phi \theta_r + \gamma \Phi Z v = \Phi (\theta_r + \gamma Z v)\,,
+\end{align*}
+which shows that $Tq \in \cF_{\phi}$, finishing the proof.
+\end{enumerate}
+\end{solution*}
+
+%\begin{question}
+%\end{question}
+%\begin{solution*}
+%\end{solution*}
+
+
+\bigskip
+\bigskip
+
+\noindent
+\textbf{
+Total for all questions: \arabic{DocPoints}}.
+Of this, up to 20 can be bonus marks You can receive bonus marks by asking/upvoting questions, for a total of 20 bonus marks! 
+You must ask at least one question in one of the Lecture Discussion Threads by the Assignment 2 deadline to receive 10 bonus marks. 
+You can also receive 2 bonus marks for upvoting at least one question before 8am on the day of each lecture, for a maximum of 2 marks x 5 lectures = 10 marks for upvoting.
+Your assignment will be marked out of \arabic{DocPoints} minus the bonus marks you received.
+% Of this, 20 are bonus marks (i.e., $100$ marks worth $100\%$ on this problem set).
+
+\end{document}
+
+
+
+

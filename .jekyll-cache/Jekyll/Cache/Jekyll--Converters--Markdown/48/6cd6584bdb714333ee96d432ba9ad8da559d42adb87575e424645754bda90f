@@ -1,0 +1,5 @@
+I"a<p>We start by recapping the definition of MDPs and then firm up the loose ends from the previous lecture:
+why do the probability distributions \(\mathbb{P}_\mu^\pi\) exist and how are they defined?
+We then continue with the introduction
+of what we call the Fundamental Theorem of Dynamic Programming and end with the discussion of value iteration.</p>
+:ET
