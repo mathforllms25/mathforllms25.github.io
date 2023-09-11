@@ -29,6 +29,7 @@ url: "https://mltheorycourse.github.io" # the base hostname & protocol for your 
 
 # Build settings
 # remote_theme: pmarsceill/just-the-docs
+# Using version 0.5.3 since setting the font using $body-font-family in custom_color_scheme.scss does not work in 0.6.x 
 remote_theme: just-the-docs/just-the-docs@v0.5.3 
 
 plugins:
