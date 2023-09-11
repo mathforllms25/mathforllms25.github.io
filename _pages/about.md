@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About CMPUT 654
+title: About
 nav_order: 2
 ---
 
