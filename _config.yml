@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: RL Theory
+title: ML Theory
 email: mltheorycourse@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Website of the course CMPUT 605: Theoretical Foundations of Reinforcement Learning.
+  Website of the course CMPUT 654: Theoretical Foundations of Machine Learning.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mltheorycourse.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
@@ -67,14 +67,6 @@ collections:
     permalink: "/:collection/:path/"
     output: true
 
-  w2022-lecture-notes:
-    permalink: "/:collection/:path/"
-    output: true
-
-  w2021-lecture-notes:
-    permalink: "/:collection/:path/"
-    output: true
-
 just_the_docs:
   # Define which collections are used in just-the-docs
   collections:
@@ -83,12 +75,6 @@ just_the_docs:
        
     lecture-notes:
       name: Lecture Notes
-
-    w2022-lecture-notes:
-      name: Winter 2022 Lecture Notes
-
-    w2021-lecture-notes:
-      name: Winter 2021 Lecture Notes
 
 # Enable or disable heading anchors
 heading_anchors: false
@@ -100,7 +86,7 @@ heading_anchors: false
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2020 RL Theory."
+footer_content: "Copyright &copy; 2023 ML Theory."
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
@@ -110,6 +96,6 @@ last_edit_time_format: "%b %e %Y" # uses ruby's time format: https://ruby-doc.or
 disqus:
     # Leave shortname blank to disable comments site-wide.
     # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
-    shortname: rltheory
+    shortname: mltheory
 
 color_scheme: custom_color_scheme
