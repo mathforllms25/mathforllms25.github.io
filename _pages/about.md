@@ -1,10 +1,10 @@
 ---
 layout: default
-title: About CMPUT 605
+title: About CMPUT 654
 nav_order: 2
 ---
 
-# CMPUT 605: (Individual Study) Theoretical Foundations of Reinforcement Learning W2023
+# CMPUT 654: Theoretical Foundations of Machine Learning F2023
 
 The purpose of this course is to let students acquire a solid understanding of the theoretical foundations of reinforcement learning, as well as to give students a glimpse on what theoretical research looks like in the context of computer science.
 The topics will range from building up foundations (Markovian Decision Processes and the various special cases of it), to discussing solutions to two core problem settings:

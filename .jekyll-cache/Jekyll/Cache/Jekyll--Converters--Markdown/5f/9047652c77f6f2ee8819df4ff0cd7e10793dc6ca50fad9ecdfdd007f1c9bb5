@@ -1,7 +1,0 @@
-I"7<p>In this lecture we</p>
-<ol>
-  <li>introduce local planning;</li>
-  <li>show that for deterministic MDPs there is a local planner whose runtime per call is independent of the size of the state space;</li>
-  <li>show that this local planner has in fact a near-optimal runtime in a worst-case sense.</li>
-</ol>
-:ET

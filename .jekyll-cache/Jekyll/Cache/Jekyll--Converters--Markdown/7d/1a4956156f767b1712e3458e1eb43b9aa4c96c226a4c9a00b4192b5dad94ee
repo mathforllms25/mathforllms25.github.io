@@ -1,5 +1,0 @@
-I"À<p>In the previous lecture local planning was introduced.
-The main idea is to amortize the cost of planning by asking a planner to produce an action to be taken at a particular state so that the policy induced by repeatedly calling the planner at the states just visited and then using the action returned by the planner is near-optimal.
-We have seen that with this, the cost of planning can be made independent of the size of the state space â€“ at least for deterministic MDPs.
-For this, one can use just a recursive implementation of value iteration, which, for convenience, we wrote using <strong>action-value functions</strong> and the corresponding Bellman optimality operator, $T$, defined by</p>
-:ET
