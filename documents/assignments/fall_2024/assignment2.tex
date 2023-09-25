@@ -1,0 +1,318 @@
+\documentclass{article}
+\newcommand{\hwnumber}{2}
+
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\abs}[1]{| #1 |}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\epsilon}{\varepsilon}
+
+\usepackage{fullpage,amsthm,amsmath,amssymb}
+\usepackage{algorithm,algorithmic}
+\usepackage{mathtools}
+\usepackage{bbm,bm}
+\usepackage{enumerate}
+\usepackage{xspace}
+\usepackage[textsize=tiny,
+]{todonotes}
+\newcommand{\todot}[1]{\todo[color=blue!20!white]{T: #1}}
+\newcommand{\todoc}[1]{\todo[color=orange!20!white]{Cs: #1}}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=black]{hyperref}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Lap}{Lap}
+\DeclareMathOperator*{\Exp}{\mathbf{E}}
+\DeclareMathOperator*{\1}{\mathbbm{1}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\V}{\mathbb V}
+\renewcommand{\P}[1]{P\left\{ #1 \right\}}
+\newcommand{\Prob}[1]{\mathbb{P}( #1 )}
+\newcommand{\Probgr}[1]{\mathbb{P}\left( #1 \right)}
+\newcommand{\real}{\mathbb{R}}
+\renewcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\EE}[1]{\E[#1]}
+\newcommand{\bfone}{\1}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\cF}{\mathcal{F}}
+\usepackage[capitalize]{cleveref}
+\usepackage{xifthen}
+
+\newcounter{DocPoints} 
+\newcounter{QuestionPoints} 
+\newcommand{\points}[1]{	\par\mbox{}\par\noindent\hfill {\bf #1 points}	\addtocounter{DocPoints}{#1}
+	\addtocounter{QuestionPoints}{#1}
+}
+\newcommand{\tpoints}[1]{        	\ifthenelse{\isempty{#1}}	{	}	{		\addtocounter{DocPoints}{#1}
+		\addtocounter{QuestionPoints}{#1}
+	}													 	\par\mbox{}\par\noindent\hfill {Total: \bf \arabic{QuestionPoints}\xspace points}\par\mbox{}\par\hrule\hrule
+	\setcounter{QuestionPoints}{0}
+}
+\newcommand{\tpoint}[1]{
+	\tpoints{#1}
+}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem*{solution*}{Solution}
+
+\newcommand{\hint}{\noindent \textbf{Hint}:\xspace}
+
+\usepackage{hyperref}
+
+\newcommand{\epssub}{\delta}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\sA}{\mathcal{A}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{CMPUT 655: Theoretical Foundations of Machine Learning, Fall 2023\\ Homework \#\hwnumber}}
+\end{center}
+
+\section*{Instructions}
+\textbf{Submissions}
+You need to submit a single PDF file, named {\tt p0\hwnumber\_<name>.pdf} where {\tt <name>} is your name.
+The PDF file should include your typed up solutions (we strongly encourage to use pdf\LaTeX). 
+Write your name in the title of your PDF file.
+We provide a \LaTeX template that you are encouraged to use.
+To submit your PDF file you should send the PDF file via private message to Csaba on Slack before the deadline.
+
+
+\textbf{Collaboration and sources}
+Work on your own. You can consult the problems with your classmates, use books
+or web, papers, etc.
+Also, the write-up must be your own and you must acknowledge all the
+sources (names of people you worked with, books, webpages etc., including class notes.) 
+Failure to do so will be considered cheating.  
+Identical or similar write-ups will be considered cheating as well.
+Students are expected to understand and explain all the steps of their proofs.
+
+\textbf{Scheduling}
+Start early: It takes time to solve the problems, as well as to write down the solutions. Most problems should have a short solution (and you can refer to results we have learned about to shorten your solution). Don't repeat calculations that we did in the class unnecessarily.
+
+\textbf{Other}
+Some problems get zero points. These are practice problems that will not be marked.
+
+\vspace{0.3cm}
+
+\textbf{Deadline:} October 8 at 11:55 pm
+
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\nS}{\mathrm{S}}
+\newcommand{\nA}{\mathrm{A}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\ip}[1]{\langle #1 \rangle}
+\newcommand{\one}[1]{\mathbb{I}\{#1\}}
+\newcommand{\KL}{\mathrm{KL}}
+
+
+
+\section*{Problems}
+As usual, we assume all functions are measurable as needed.
+The topic of the first group of questions is basic measure concentration.
+\begin{question}
+\mbox{}
+\begin{enumerate}[(a)]
+\item
+Calculate the moment-generating function of Gaussian random variable. Show your work. 
+\points{2}
+
+\item Prove Tong's version of Markov's inequality. That is, for any random variable $X$, any function $h: \R\to [0,\infty)$ and any $t>0$, $\Prob{h(X)\ge t}\le \EE{h(X)}/t$.
+\points{2}
+
+\item
+Let $X$ be a random variable on $\R$ with density with respect to the Lebesgue measure of $p(x) = |x| \exp(-x^2/2)/2$.
+Show that $\Prob{|X| \geq \epsilon} = \exp(-\epsilon^2 / 2)$.
+\points{2}
+
+\item Let $X$ as in the previous part. Show that
+$X$ is \textbf{not} $\sqrt{(2-\epsilon)}$-subgaussian for any $\epsilon > 0$.
+\points{2}
+
+\item 
+Let $X_i$ be $\sigma_i$-subgaussian for $i \in \set{1,2}$ with $\sigma_i \geq 0$. Prove that $X_1+X_2$ is $(\sigma_1 + \sigma_2)$-subgaussian.
+Do \textit{not} assume independence of $X_1$ and $X_2$.
+\points{2}
+
+\end{enumerate}
+\tpoints{}
+\end{question}
+
+
+
+
+The next questions explores the union bound. 
+
+\begin{question}
+\mbox{}
+
+Fix $0\le \delta \le 1$.
+Show that there exist a finite set $W$ and collection of random variables $(X(w))_{w\in W}$ such that, for any $w\in W$,
+with probability at least $1-\delta$, $X(w)\ge 0$
+yet it is not true that with probability $1-\delta$, $\min_{w\in W} X(w)\ge 0$.
+\tpoints{2}
+\end{question}
+
+
+
+The next questions explores PAC learning.
+
+\begin{question}
+\mbox{}
+
+\begin{enumerate}[(a)]
+\item
+Show that the ERM for the AND class can be efficiently computed.
+\points{5}
+
+\item
+Show that the ERM for ``Decision Lists'' (Example 3.2 in the book) can be efficiently computed.
+\points{10}
+
+\item
+Show that the ``Decision Lists'' class is PAC learnable.
+\points{5}
+
+\end{enumerate}
+\tpoints{}
+\end{question}
+
+
+
+The next questions explore multiplicative Chernoff inequality (and compares it to the additive one).
+
+In this question $X_1,\dots,X_n$ are i.i.d. random variables, $X_1\in [0,1]$, $\mu = \EE{X_1}$ and $\bar X_n = (X_1+\dots+X_n)/n$.
+We also fix $0< \delta < 1$ and let $L = \log(1/\delta)/n$.
+We use the standard notation $(x)_+ = \max(x,0)$ ($x\in \R$). In words, $(x)_+$ is called the ``positive part'' of $x$.
+\begin{question}
+\mbox{}
+
+\begin{enumerate}[(a)]
+
+\item \label{p:q1} Show that for any $b,c\ge 0$ and $u\in\R$, $u\le c + b \sqrt{u}$ implies $u \le c + b \sqrt{c} + b^2$.
+\points{2}
+
+\item \label{p:q2} Show that for any $b,c\ge 0$ and $u\in \R$, $u \ge c - b \sqrt{u}$ implies $u \ge c - b \sqrt{c}$.
+\points{2}
+
+\item Show that with probability at least $1-\delta$, $\mu \le \bar X_n + \sqrt{2L \bar X_n} + 2L$.
+\points{2}
+
+\item Show that with probability at least $1-\delta$, $\mu \ge (\bar X_n - L/3)_+ - \sqrt{2L\, (\bar X_n - L/3)_+}$. 
+\points{2}
+
+\item \label{p:mc1} Assume $\mu>0$. Show that Hoeffding's inequality (or ``additive Chernoff'') implies that if $2n \ge \log(1/\delta)/(\mu\eps)^2$ then with probability at least $1-\delta$,  $\frac{\mu -\bar X_n}{\mu}\le \epsilon$.
+\points{2}
+
+\item \label{p:mc2} Assume $\mu>0$. Show that the multiplicative Chernoff inequality implies that if $n \ge 2\log(1/\delta)/(\mu\eps^2)$ then with probability at least $1-\delta$,  $\frac{\mu -\bar X_n}{\mu}\le \epsilon$.
+\points{2}
+\end{enumerate}
+
+\noindent \textbf{Remark}
+Consider now the results of Parts~\eqref{p:mc1} and \eqref{p:mc2}. From these, we see that
+Hoeffding's inequality implies that to achieve $\bar X_n \ge \mu/2$ hold with high probability,
+ it is sufficient to take $O(1/\mu^2)$ samples.
+In contrast, the multiplicative Chernoff inequality  implies that $O(1/\mu)$ samples are sufficient.
+Yet another reason to call the multiplicative Chernoff inequality multiplicative is because it gives better results for such multiplicative (or relative) error bounds.
+
+\tpoints{}
+
+\end{question}
+
+
+
+For a measurable set $\cX$, $U\subset \R$ measurable, let $\cM(\cX,U)$ be the set of measurable functions from $\cX$ to $U$.
+Let $\cZ$ be a set and let $P$ be a distribution over $\cZ$ (hence, $\cZ$ is assumed to be equipped with an appropriate measurability structure).
+For $c_0,c_1>0$, we define 
+\[
+\Var_\cZ(c_0,c_1,P) = \{ g \in \cM(\cZ,\R)\, :\, \Var_P(g) \le c_0^2 + c_1 P g\},
+\]
+where recall that $Pg = \int g dP$ and $\Var_P(g) =
+ \int (g-Pg)^2 dP$ (which, by  a slight abuse of notation, we may also write as 
+ $P\, (g-Pg)^2$).
+
+
+\begin{question}
+Solve the following problems.
+\begin{enumerate}[(a)]
+
+\item Show that $\cM(\cZ,[0,1]) \subset \Var_{\cZ}(0,1,P)$. 
+\points{2}
+
+\item
+For some set $\cX$,  let $\cF \subset \cM(\cX,\R)$ and assume that $\cF$ is convex (i.e., for any $\alpha\in [0,1]$, $f,g\in \cF$, $\alpha f + (1-\alpha)g \in \cF$ also holds).
+Let $\cZ = \cX \times \R$ and 
+\[
+\cG = \{ \ell_f \,:\, \ell_f: \cZ \to \R, \ell_f(x,y) = (f(x)-y)^2, f\in \cF \}\,.
+\]
+By abusing notation, we also write for this set  $\cG = \ell_{\text{sq}}\circ \cF$.
+Let $P\in \cM_1(\cZ)$ be such that
+for some $M>0$ constant, for any $g\in \cG$, $g(Z)\le M^2$ with probability one, where $Z\sim P$.
+Define $g_* = \argmin_{g\in \cG} P g$ (which is assumed to exist) and 
+\begin{align*}
+\tilde\cG = \{ g - g_* \,:\, g\in \cG \}  \quad (= \cG - \{ g_*\})\,.
+\end{align*}
+Then, for some universal constant $c>0$,
+\begin{align*}
+\tilde \cG \subset \Var_{\cZ}(0,c M^2,P).
+\end{align*}
+\points{10}
+
+\item Fix $M>0$. Let $\cF \subset \cM(\cX,[0,M])$, $\cZ = \cX \times [0,M]$, $P\in \cM_1(\cZ)$.
+Let $\cG = \ell_{\text{sq}} \circ \cF$, $f_*(x) = \EE{Y|X=x}$, $x\in \cX$ and 
+$\tilde \cG = \cG - \{ \ell_{f_*} \}$.
+Then, for some universal constant $c>0$,
+ $\tilde \cG \subset \Var_{\cZ}(0,c M^2,P)$.
+\points{10}
+
+\end{enumerate}
+ 
+\tpoints{}
+\end{question}
+
+
+
+
+
+
+
+\bigskip
+\bigskip
+
+\noindent
+\textbf{
+Total for all questions: \arabic{DocPoints}}.
+Of this, \textcolor{red}{16} are bonus marks. 
+Your assignment will be marked out of \textcolor{red}{50}.
+
+
+\end{document}
+
+
+
+
+
