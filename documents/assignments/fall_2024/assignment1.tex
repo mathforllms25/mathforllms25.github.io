@@ -1,0 +1,470 @@
+\documentclass{article}
+\newcommand{\hwnumber}{1}
+
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\abs}[1]{| #1 |}
+
+\usepackage{fullpage,amsthm,amsmath,amssymb}
+\usepackage{algorithm,algorithmic}
+\usepackage{mathtools}
+\usepackage{bbm,bm}
+\usepackage{enumerate}
+\usepackage{xspace}
+\usepackage[textsize=tiny,
+]{todonotes}
+\newcommand{\todot}[1]{\todo[color=blue!20!white]{T: #1}}
+\newcommand{\todoc}[1]{\todo[color=orange!20!white]{Cs: #1}}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=black]{hyperref}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Lap}{Lap}
+\DeclareMathOperator*{\Exp}{\mathbf{E}}
+\DeclareMathOperator*{\1}{\mathbbm{1}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\V}{\mathbb V}
+\renewcommand{\P}[1]{P\left\{ #1 \right\}}
+\newcommand{\Prob}[1]{\mathbb{P}( #1 )}
+\newcommand{\Probgr}[1]{\mathbb{P}\left( #1 \right)}
+\newcommand{\real}{\mathbb{R}}
+\renewcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\EE}[1]{\E[#1]}
+\newcommand{\bfone}{\1}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\cF}{\mathcal{F}}
+\usepackage[capitalize]{cleveref}
+\usepackage{xifthen}
+
+\newcounter{DocPoints} 
+\newcounter{QuestionPoints} 
+\newcommand{\points}[1]{	\par\mbox{}\par\noindent\hfill {\bf #1 points}	\addtocounter{DocPoints}{#1}
+	\addtocounter{QuestionPoints}{#1}
+}
+\newcommand{\tpoints}[1]{        	\ifthenelse{\isempty{#1}}	{	}	{		\addtocounter{DocPoints}{#1}
+		\addtocounter{QuestionPoints}{#1}
+	}													 	\par\mbox{}\par\noindent\hfill {Total: \bf \arabic{QuestionPoints}\xspace points}\par\mbox{}\par\hrule\hrule
+	\setcounter{QuestionPoints}{0}
+}
+\newcommand{\tpoint}[1]{
+	\tpoints{#1}
+}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem*{solution*}{Solution}
+
+\newcommand{\hint}{\noindent \textbf{Hint}:\xspace}
+
+\usepackage{hyperref}
+
+\newcommand{\epssub}{\delta}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\sA}{\mathcal{A}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{CMPUT 655: Theoretical Foundations of Machine Learning, Fall 2023\\ Homework \#\hwnumber}}
+\end{center}
+
+\section*{Instructions}
+\textbf{Submissions}
+You need to submit a single PDF file, named {\tt p0\hwnumber\_<name>.pdf} where {\tt <name>} is your name.
+The PDF file should include your typed up solutions (we strongly encourage to use pdf\LaTeX). 
+Write your name in the title of your PDF file.
+We provide a \LaTeX template that you are encouraged to use.
+To submit your PDF file you should send the PDF file via private message to Csaba on Slack before the deadline.
+
+
+\textbf{Collaboration and sources}
+Work on your own. You can consult the problems with your classmates, use books
+or web, papers, etc.
+Also, the write-up must be your own and you must acknowledge all the
+sources (names of people you worked with, books, webpages etc., including class notes.) 
+Failure to do so will be considered cheating.  
+Identical or similar write-ups will be considered cheating as well.
+Students are expected to understand and explain all the steps of their proofs.
+
+\textbf{Scheduling}
+Start early: It takes time to solve the problems, as well as to write down the solutions. Most problems should have a short solution (and you can refer to results we have learned about to shorten your solution). Don't repeat calculations that we did in the class unnecessarily.
+
+\textbf{Other}
+Some problems get zero points. These are practice problems that will not be marked.
+
+\vspace{0.3cm}
+
+\textbf{Deadline:} September 24 at 11:55 pm
+
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\nS}{\mathrm{S}}
+\newcommand{\nA}{\mathrm{A}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\ip}[1]{\langle #1 \rangle}
+\newcommand{\one}[1]{\mathbb{I}\{#1\}}
+\newcommand{\KL}{\mathrm{KL}}
+
+\section*{Preliminaries}
+
+In the problems and throughout the course, we use the notation of standard probability theory. The notation, and the basic rules of calculus with expectations and probabilities are summarized in Chapter~2 of the bandit book, which can be accessed for free \href{https://tor-lattimore.com/downloads/book/book.pdf}{here}. It may be useful to briefly skim through this chapter before embarking on solving the problems. In the solutions, feel free to use any results mentioned in this chapter, or your favourite book on probabilities.
+One way I was deviating from the book in the lectures is to write $P(dy)$ instead of $dP(y)$ for integrals over measure $P$ where the integrand uses the variable name $y$. This is just a variation of notation and you should feel free to use either of them (perhaps not both, at least not in the same expression, or close to each other).
+
+As it will be useful for the first problem, let us recall the following: If $X$ is a random element taking values in some space $\cX$ and $P_X$ denotes the pushforward of $X$\footnote{Strictly speaking, we should say $P_X$ is the pushforward of $\PP$ under $X$. This is too long. So we will just say the pushforward of $X$, or even, the distribution of $X$.} 
+then for any real-valued, $f:\cX \to \R$ measurable function,
+\begin{align}\label{eq:pf}
+\EE{ f(X) } = \int_{\cX} f(x) P_X(dx)\,,
+\end{align}
+provided that either the right-hand side, or the left-hand side exist.
+Some people call this the \emph{law of the unconscious statistician}, or LOTUS.
+This fact is mentioned in the last paragraph of Section~2.5 of the bandit book.
+(I find it entertaining and a bit surprising that unconscious statistician would know about push-forward measures and low and behold, usually, this result is given in more elementary texts that state this for some special case only and not for general random element. But this ``law'' (better: identity) holds in general, so we will just call it LOTUS.)
+
+Another goodie you may need is that if $X,Y$ are independent then the pushforward of $Z = (X,Y)$, $P_Z$, is a product of the pushforwards of $X$ and $Y$: $P_Z = P_X \otimes P_Y$. This was left out from the bandit book by accident! 
+
+\section*{Problems}
+
+
+In the first problem, we consider the setting of supervised learning:
+Let
+\begin{align*}
+(X_1,Y_1),\dots,(X_n,Y_n),(X,Y)
+\end{align*}
+be a sequence identically distributed, independent random variables\footnote{Purists, like the authors of the bandit book, would call these random elements: According to such purists, random variables are real-valued random elements. This is a bit too much of a formality sometimes. Hence, I may switch between being a purist or not depending on my mood, hoping this won't cause confusion. But in any case, I will \emph{not} rely on that if I say that $X$ is a random variable then it is real-valued. If I do, call me out and I owe you one.
+}
+ taking values in the set $\cX \times \cY$.
+Let the common distribution of these random variables be $P$.
+
+Elements of $\cX$ are called inputs, elements of $\cY$ are called outputs.
+Let 
+\begin{align*}
+\ell:\cY \times \cY \to [0,\infty)
+\end{align*}
+be a function, which we call the loss function.
+For a fixed function $f:\cX \to \cY$, let 
+\begin{align}
+L(f) = \int \ell(f(x),y) P(dx,dy)\,. 
+\label{eq:Ldef}
+\end{align}
+Here, and in what follows, in these exercises, unless otherwise stated, we assume that the expectations and integrals are (well-)defined.\footnote{For example, above, for this to hold we would need that $(x,y) \mapsto \ell(f(x),y)$ is measurable with respect to the appropriate measurable spaces and this also means that the integral above gives a finite value. For definitions of these concepts, see Chapter 2 of the bandit book.
+But in these problems we are not concerned about whether the appropriate maps are measurable. We may occasionally be concerned about whether an integral  (expected value) exists. When this is of essence, it will be noted.
+}
+Let 
+\begin{align*}
+\cA: (\cX\times \cY)^n \to \cY^{\cX}
+\end{align*}
+be a map, which assigns to every $n$-tuple of input-output pairs a function that maps inputs to outputs. 
+Define
+\begin{align*}
+f_n = \cA( (X_1,Y_1),\dots, (X_n,Y_n) )\,.
+\end{align*}
+
+\begin{question}
+Show that the following hold:
+\begin{enumerate}[(a)]
+\item For any $f:\cX \to \cY$, $L(f) = \EE{\ell(f(X),Y)} = \EE{\ell(f(X_1),Y_1)} = \dots = \EE{\ell(f(X_n),Y_n)}$ whenever any of these terms is well-defined.\footnote{Thanks Shuai for this freebee!}
+\points{2}
+\item \label{p:vlad} 
+With probability one, it holds that $\EE{ \ell(f_n(X),Y) | D_n } = L(f_n)$ whenever $\EE{L(f_n)}$ exists,
+where
+$D_n = ((X_1,Y_1),\dots,(X_n,Y_n))$.
+\footnote{Thanks Vlad for this nice problem!}
+Here, we must mention that $\ell$ is a measurable function of its arguments, and so is $\cA$.
+\points{10}
+
+\hint 
+Sometimes the solution becomes clear (and the proof becomes much cleaner) if one proves a more general result. In terms of the tools needed,  besides some elementary results, the definition of conditional expectations, Theorem 2.11 from the bandit book and Fubini's theorem are needed.
+Note that we assume measurability of all maps involved, in particular $L$ (which also follows from the measurability of the other maps).
+If you are stuck, prove the result for the case when $D_n$ is discrete valued for half the marks.
+
+\item We have $\EE{\ell(f_n(X),Y)} = \EE{L(f_n)}$ whenever either side exists.
+\points{2}
+
+\hint Check out Theorem 2.12 (which lists properties of conditional expectations) from the bandit book.
+
+\item \label{p:test} Let $D_m' = (X_1',Y_1'),\dots,(X_m',Y_m')$ be independent, identically distributed sequence of random variables such that the distribution of $(X_1',Y_1')$ is also $P$. Assume that $D_m'$ and $D_n$ are independent. For $f:\cX \to \cY$, let 
+\begin{align*}
+L_m(f) = \frac1m \sum_{i=1}^m \ell( f(X_i'),Y_i')\,.
+\end{align*}
+Show that with probability one it holds that
+\begin{align*}
+\EE{L_m(f_n)|D_n}= L(f_n)\,.
+\end{align*}
+assuming $\EE{L(f_n)}$ exists.
+
+\hint Again, Theorem 2.12 from the bandit book, the theorem about the properties of conditional expectations, will be useful.
+
+\points{2}
+
+\item \label{p:test1} 
+In the remaining problems assume that $\EE{L(f_n)}$ exist.
+
+Show that with probability one, $L_m(f_n) \to L(f_n)$ as $m\to \infty$.
+For this problem assume that $D_n$ is a discrete-valued random element (that is, there exists a countable set $C$ such that $\Prob{D_n\in C} = 1$).
+
+To get full marks, use elementary reasoning together with the strong law of large numbers that states that for independent, identically distributed random variables, the sample mean converges to the common mean with probability one assuming the common mean exist.
+\points{10}
+
+\hint Recall the law of large numbers. 
+
+\item For the curious minded: Prove that the result of the previous continues to hold even if $D_n$ is not restricted to be discrete-valued.
+
+\points{2}
+
+\hint This is hard to show from first principles. If you get stuck, 
+I suggest checking out the book of Chow and Teicher, in particular Section 7.2 in that book.
+The title of the book is ``Probability Theory:
+Independence, Interchangeability, Martingales'' and is available from Springer. I have the third edition.
+
+
+\item \label{p:test2} What changes when $D_m'$ and $D_n$ are not independent? What happens for example when $m=n$ and $D_m'=D_n$? Show that in this case, with probability one,
+\begin{align*}
+\EE{L_m(f_n)|D_n} = \frac1n \sum_{i=1}^n \ell(f_n(X_i),Y_i)\,.
+\end{align*}
+
+\points{2}
+
+\item \label{p:test3}
+Assuming $D_m'=D_n$, give an example 
+in terms of $(\cX,\cY,P,\ell,(\cA_n)_{n\ge 1})$  where $\cA_n: (\cX \times \cY)^n \to \cY^{\cX}$ 
+and $P$ is a joint distribution on $\cX \times \cY$,
+such that
+for every $n(=m)$,
+$L_m(f_n)=0$ with probability one, yet $L(f_n)\ge 0.5$ with probability one.
+That is, testing on the training set can lead to spurious outcomes.
+
+\points{2}
+
+
+\end{enumerate}
+ 
+\tpoints{}
+\end{question}
+
+
+
+
+The next question is concerned with ``trade-offs'' or, if you want more drama, no free lunch for statisticians (or machine learners).
+First, recall that $L(f)$ is the expected loss of a function $f:\cX \to \cY$.
+To discuss tradeoffs, by abusing notation, we overload the definition of $L$ from \cref{eq:Ldef} to make the dependence of $L$ on $P$ explicit:
+\begin{align*}
+L(P,f) = \int \ell( f(x),y) P(dx,dy)\,.
+\end{align*}
+In class we, informally, defined the goal of choosing $\cA$ (the learning rule/map/algorithm/method) to keep the expected losses $L(P,\cA)=\EE{L(P,\cA(D_n))}$ small.
+Expanding on this expectation, we have
+\begin{align*}
+L(P,\cA) = \int L(P,\cA(w)) P^{\otimes n}(dw)
+= \int \tilde{\ell}( \cA(w), z ) P^{\otimes n}(dw) P(dz)\,,
+\end{align*}
+where, for $z=(x,y)\in \cX\times \cY$, $\tilde{\ell}(f,z) = \ell(f(x),y)$.
+Thus, the distribution $P$ appears $n+1$ times in this expression (why?).
+
+Now, can we design an algorithm $\cA^*$ such that 
+\begin{align*}
+L(P,\cA^*) = \inf_{\cA} L(P,\cA)
+\end{align*}
+holds \emph{for all $P$}?
+This is very demanding: $\cA^*$, without knowing $P$, should be as good as an algorithm that is chosen using the ``knowledge of $P$'': In the right-hand side above, the value will clearly depend on $P$ (and the choice of $\cA$, if any, that minimizes the loss $L(P,\cA)$, will depend on $P$).
+Except for trivial cases, the above goal cannot be achieved. In fact, this is the main reason the field of machine learning is so exciting! If there was a magical solution (and we would know it), the field would be (almost) over.
+
+The next problem will illustrate the core difficulty. As such, the example will be kept simple.
+In fact, in the example $\cX$ is chosen to be a singleton (a set with a single element).
+As such, any function $f:\cX\to \cY$ can be identified with some element of $\cY$ (picking a function is the same as picking an element of $\cY$), and in what follows, we therefore just replace such functions with elements of $\cY$. Moreover, since in the observations $(X,Y)$, the input $X$ carries no information, we will drop the inputs. We also assume there is only one observation, i.e., $n=1$.
+Then, learning methods $\cA$ are  simple (measurable) maps from $\cY$ to $\cY$.
+Finally, we choose $\cY=\R$ and
+the loss $\ell$ is chosen to the quadratic loss: 
+\[
+\ell(u,v) = (u-v)^2\,.
+\]
+It also follows that for $f\in \R$, 
+\begin{align}
+L(P,f) = \int \ell( f,y) P(dy) = \int (f-y)^2 P(dy)\,. 
+\label{eq:qloss}
+\end{align}
+
+Furthermore, in some part of the next problem we will only consider two distributions, both of them normal with the same variance $\sigma^2>0$ but different means, which we will denote by $\mu_1<\mu_2$. We will denote these by $P_1$ and $P_2$. 
+
+One way to characterize how different these distributions are is by their relative entropy.
+By letting $\KL(P,Q)$ denote the relative entropy (also known as the Kullback-Leibler divergence) between two probability measures on the real line $P$ and $Q$, 
+as it is well known,
+\begin{align}
+\KL(P_1,P_2) = \frac{(\mu_1-\mu_2)^2}{2\sigma^2} \label{eq:klnormal}
+\end{align}
+(and thus, it also follows, that $\KL(P_1,P_2) = \KL(P_2,P_1)$, while, as is well known, the relative entropy is not symmetric).
+We also let $\cN(\mu,\sigma^2)$ denote the normal distribution with mean $\mu$ and variance $\sigma^2$ over the reals. Thus, $P_i = \cN(\mu_i,\sigma^2)$.
+We will use $\cM_1(\R)$ to denote the set of probability distributions over the reals.\footnote{For $u\ge 0$, 
+$\cM_u(\R)$ denotes the set of distributions $P$ over the reals such that $\int dP = u$.}
+Further, for $P\in \cM_1(\R)$, we let $\mathrm{Var}(P)$ denote the variance underlying $P$: 
+$\mathrm{Var}(P) =\int x^2 P(dx) - (\int x P(dx))^2$.
+
+In the next problem, we will need the following result (Theorem 14.2 in the bandit book).
+\begin{theorem}[Bretagnolle--Huber inequality]
+\label{thm:pinskerhp}
+Let $P$ and $Q$ be probability measures on the same measurable space $(\Omega, \cF)$, and let $A \in \cF$ be an arbitrary event. Then,
+\begin{align}\label{eq:pinskerhp}
+P(A) + Q(A^c) \geq \frac{1}{2} \exp\left(-\KL(P, Q)\right)\,,
+\end{align} 
+where $A^c = \Omega \setminus A$ is the complement of $A$. 
+\end{theorem} 
+
+To show that there is no method that simultaneously over all $P$ is optimal, we will study
+\begin{align*}
+R(P,\cA) = L(P,\cA) - \inf_{\cA'} L(P,\cA')\,,
+\end{align*}
+which is the excess loss suffered while using $\cA$ on distribution $P$ instead of using the algorithm is achieves the best loss on $P$. Clearly, $R(P,\cA)\ge 0$ for any $P$ and $\cA$ (why?).
+Sometimes, $R(P,\cA)$ is also called the \emph{regret} of $\cA$ on $P$ (which is a shorthand for how much one regrets using $\cA$ instead of the optimal $P$-specific method).
+The ``overall optimal'' method $\cA_{\text{fictional}}$ would achieve zero regret over all $P\in \cM_1(\R)$.
+A short way of expressing this is to write
+\begin{align*}
+\sup_{P\in \cM_1(\R)} R(P,\cA_{\text{fictional}})=0
+\end{align*}
+(why?).
+Conversely, if 
+\begin{align*}
+R^* = \inf_{\cA} \sup_{P\in \cM_1(\R)} R(P,\cA) > 0\,,
+\end{align*}
+then there is no ``overall optimal'' method (why?). 
+Our angle to show that there is no optimal method will be to show this latter lower bound on $R^*$.
+The quantity $R^*$ is the minimax regret, or minimax excess loss. 
+
+We will also need $R^*(\sigma^2)$, which is the minimax regret when the set of distributions is restricted to those whose variance does not exceed $\sigma^2$.
+Formally, this could be defined as follows:
+\begin{align*}
+R^*(\sigma^2)=\inf_{\cA} \sup_{P\in \cM_1(\R): \mathrm{Var}(P)\le \sigma^2} R(P,\cA)\,.
+\end{align*}
+
+
+\begin{question}
+Solve the following problems.
+\begin{enumerate}[(a)]
+
+\item \label{p:regid} Show that for any $\cA$ and distribution 
+$P$ with finite variance $\sigma^2$ and mean $\mu$, 
+\[
+L(P,\cA) = \int (\cA(y)-\mu)^2 P(dy) + \sigma^2\,.
+\]
+
+\points{2}
+\item 
+Consider the ``identity algorithm'' $\cA: \R \to \R$ that uses $\cA(y)=y$. Evaluate $L(P,\cA)$, where $P$ is any distribution with finite variance $\sigma^2$. 
+
+\hint Use algebra and elementary properties of integrals/expectations.
+\points{2}
+
+\item Evaluate $L^*(P) = \inf_{\cA} L(P,\cA)$ where $P$ has finite variance $\sigma^2$. Is there a method $\cA$ that achieves $L^*(P)$ (i.e., $L^*(P) = L(P,\cA)$ and what is it?).
+
+\points{2}
+
+
+\item Now fix $\mu_1<\mu_2$ and define 
+$R^*(\mu_1,\mu_2) = \inf_{\cA} \max( R(P_1,\cA),R(P_2,\cA))$, 
+where recall that $P_i = \cN(\mu_i,\sigma^2)$. (As usual, in the argument of $\inf$ we only consider $\R\to\R$ measurable maps.)
+Show that $R^* \ge R^*(\mu_1,\mu_2)$. (Hence, if $R^*(\mu_1,\mu_2)>0$ then it follows that $R^*>0$.)
+\points{2}
+
+\item What algorithm would you use if you knew that the algorithm will only be evaluated on either $P_1$ or $P_2$, that is, the algorithm's quality is judged based on $\max (R(P_1,\cA),R(P_2,\cA))$? Is there an algorithm that does better than the ``identity'' algorithm?
+\points{2}
+
+\item Show that the following hold:
+\emph{(i)} for any (measurable) $\cA:\R \to \R$, $\mu_1\ne \mu_2$,
+\begin{align*}
+ \max( R(P_1,\cA),R(P_2,\cA))\ge \frac{\Delta^2}{16} \exp\left(-\tfrac{\Delta^2}{2\sigma^2}\right)\,,
+\end{align*}
+where $\Delta = |\mu_1-\mu_2|$
+and then conclude that \emph{(ii)}
+\begin{align*}
+R^*(\mu_1,\mu_2)\ge \frac{\Delta^2}{16} \exp\left(-\tfrac{\Delta^2}{2\sigma^2}\right)\,.
+\end{align*}
+
+
+\points{15}
+
+\hint Use \cref{thm:pinskerhp}. 
+While the previous part is not immediately applicable, it may give you some ideas of how to 
+lower bound the maximum loss by the sum (or maximum) of ``failure probabilities''
+(the logic is that if the data is from $P_1$, the loss is large when the prediction is in some well-chosen set $A$, while if the data is from $P_2$, the loss is large when the prediction is in the complement of $A$).
+Also, recall that for $a,b$ reals, $\max(a,b) \ge (a+b)/2$.
+
+\item \label{p:mmx:f} Show that 
+\begin{align}
+R^*(\sigma^2) \ge \frac{\sigma^2}{8} \exp(-1)\,. \label{eq:rslb}
+\end{align}
+Explain the implications of this result. What did we learn from all this? Be concise, i.e., a couple of sentences should suffice. Do not write more than 4 short paragraphs. In particular, what did we learn about $R^*$?
+
+\points{2}
+
+\item 
+Show that 
+\begin{align*}
+R^*(\sigma^2)  \le \sigma^2\,.
+\end{align*}
+
+\points{2}
+
+\item \label{p:nplemma}
+ \textbf{Practice}: Use the Neyman-Pearson lemma instead of \cref{thm:pinskerhp}
+to prove an analogue of \cref{eq:rslb}.
+Compare with \cref{eq:rslb}; the numerical constant in the lower bound should be at least three times larger than there.
+
+\points{0}
+
+\item \textbf{Practice}: 
+How would the results look like if the quadratic loss was replaced with its scaled version:
+$\ell_c(u,v) = c (u-v)^2$, $u,v\in \R$, $c>0$. 
+
+\points{0}
+
+\item \textbf{Practice}: Recalculate the minimax lower bound 
+from Part~\eqref{p:mmx:f} for the
+absolute value loss: $\ell(u,v) = |u-v|$, $u,v\in \R$.
+Also show that $R^*(\sigma^2) \le \sigma$.
+What differences do you observe compared to the squared loss.
+
+\hint Switch to the Laplace distributions for tractability. The Neyman-Pearson lemma may also be simpler to use than \cref{thm:pinskerhp}.
+\points{0}
+
+\end{enumerate}
+ 
+\tpoints{}
+\end{question}
+
+
+
+
+
+\bigskip
+\bigskip
+
+\noindent
+\textbf{
+Total for all questions: \arabic{DocPoints}}.
+Of this, \textcolor{red}{11} are bonus marks. 
+Your assignment will be marked out of \textcolor{red}{50}.
+
+
+\end{document}
+
+
+
+
+
