@@ -11,3 +11,7 @@ nav_order: 3
 |:---|:------------|:--------------|
 | 1. | September 5, 2023| [Introduction](https://www.youtube.com/watch?v=arbGdCqn2Io) |
 | 2. | September 7, 2023| [Concentration of Measure](https://www.youtube.com/watch?v=TBnSm-vYTPs)|
+| 3. | September 12, 2023| [Concentration of Measure](https://www.youtube.com/watch?v=S0aY_0SY-WA)|
+| 4. | September 14, 2023| [PAC-Learnability](https://www.youtube.com/watch?v=GzkrMYkHxaA&t=2236s)|
+| 5. | September 19, 2023| [PAC-Learnability](https://www.youtube.com/watch?v=c9rN8eBjS3k)|
+| 6. | September 21, 2023| [Empirical Processes](https://www.youtube.com/watch?v=2hfHwMX__2k)|
