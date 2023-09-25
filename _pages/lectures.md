@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Lectures
+title: Recorded lectures
 nav_order: 3
 ---
 
-# Lectures
+# Recorded lectures
 <!-- We will post the recorded lectures [here](https://www.youtube.com/playlist?list=PLQCZ7_TRKVIx6_UVxwUBFca3cDnl9DrNW). -->
 
 | #  | Date        | Lecture Videos |

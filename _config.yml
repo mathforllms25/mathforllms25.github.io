@@ -63,9 +63,9 @@ collections:
     permalink: "/:collection/:path/"
     output: true
 
-  lecture-notes:
-    permalink: "/:collection/:path/"
-    output: true
+#  lecture-notes:
+#    permalink: "/:collection/:path/"
+#    output: true
 
 just_the_docs:
   # Define which collections are used in just-the-docs
@@ -73,8 +73,8 @@ just_the_docs:
     pages:
        name: Pages
        
-    lecture-notes:
-      name: Lecture Notes
+#    lecture-notes:
+#      name: Lecture Notes
 
 # Enable or disable heading anchors
 heading_anchors: false

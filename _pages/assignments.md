@@ -5,19 +5,18 @@ nav_order: 4
 comments: true
 ---
 
-# The Work You Do 
+# The Work You Do
 
 | Component | Weight | Deadline | PDF and LaTex |
 |:---|:---|:---------|:----|
-| Assignment 0 (Not Graded) | 0% | January 15,  2023 11:55pm | [PDF](/documents/assignments/winter_2023/assignment0.pdf) and [LaTex](/documents/assignments/winter_2023/assignment0.tex)|
-| Assignment 1 | 10% | January 29,  2023 11:55pm | [PDF](/documents/assignments/winter_2023/assignment1.pdf) and [LaTex](/documents/assignments/winter_2023/assignment1.tex) |
-| Assignment 2 | 10% | February 12, 2023 11:55pm | [PDF](/documents/assignments/winter_2023/assignment2.pdf) and [LaTex](/documents/assignments/winter_2023/assignment2.tex) |
-| Midterm      | 20% | February 26, 2023 11:55pm | [PDF](/documents/assignments/winter_2023/midterm.pdf) and [LaTex](/documents/assignments/winter_2023/midterm.tex)|
-| Project (Proposal) | 10% | March 5, 2023 11:55pm ||
-| Assignment 3 | 10% | March 12,    2023 11:55pm | [PDF](/documents/assignments/winter_2023/assignment3.pdf) and [LaTex](/documents/assignments/winter_2023/assignment3.tex) |
-| Assignment 4 | 10%| March 26,    2023 11:55pm |[PDF](/documents/assignments/winter_2023/assignment4.pdf) and [LaTex](/documents/assignments/winter_2023/assignment4.tex) |
-| Project (Presentation) | 10% | April 11 and 12, 2023 (in class)||
-| Project (Report) | 20% | April 21, 2023 11:55pm ||
+| Assignment 1 | 10% | September 24,  2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment1.pdf) and [LaTex](/documents/assignments/fall_2024/assignment1.tex) |
+| Assignment 2 | 10% | October 8, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment2.pdf) and [LaTex](/documents/assignments/fall_2024/assignment2.tex) |
+| Midterm      | 20% | October 15, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/midterm.pdf) and [LaTex](/documents/assignments/fall_2024/midterm.tex)|
+| Project (Proposal) | 10% | October 29, 2023 11:55pm ||
+| Assignment 3 | 10% | November 12,    2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment3.pdf) and [LaTex](/documents/assignments/fall_2024/assignment3.tex) |
+| Assignment 4 | 10%| November 26,    2023 11:55pm |[PDF](/documents/assignments/fall_2024/assignment4.pdf) and [LaTex](/documents/assignments/fall_2024/assignment4.tex) |
+| Project (Presentation) | 10% | December 5 and 7, 2023 (in class)||
+| Project (Report) | 20% | December 10, 2023 11:55pm ||
 
 
 <!-- | Assignment 1 | January 25,  2022 11:55pm | [PDF](/documents/assignments/assignment1.pdf) and [LaTex](/documents/assignments/assignment1.tex)|
@@ -52,22 +51,21 @@ Assignment 0 is not graded. It is intended for students to get a rough idea of t
 | Project (Report) | 20% | April 18, 2023 11:55pm | -->
 
 # Late Policy
-Late submissions will not be graded. 
-Please submit your work by the deadline.
+ Late submissions will NOT be accepted, but to allow for flexibility in case of issues for any reason to submit solutions in time, 10% of the mark can be shifted from any component to the midterm.
 
 # Course Project
 
 ## Deadlines
 
-- Proposal: March 5, 2023 11:55pm
-- Presentations: April 11 and 12, 2023, in class
-- Report: April 18, 2023 11:55pm
+- Proposal: October 29, 2023 11:55pm
+- Presentations: December 5 and 7, 2023, in class
+- Report: December 10, 2023 11:55pm
 
 ## Objective and evaluation
 The project should be done individually or in a group of two (maximum group size of two).
 
 The goal is for everyone to get a taste of how it is to work
-on theoretical aspects of reinforcement learning.
+on theoretical aspects of machine learning.
 In the project, you do not actually need to produce research paper quality results (although if you do, no one will complain!). It is sufficient to demonstrate a **thorough understanding** of some aspect of the theory literature, such as:
 
 - What are the interesting questions to ask (and what are less interesting questions?)
@@ -85,9 +83,9 @@ Having said this, if you score a new result early on, it is also OK to start on 
 ## How to choose a topic?
 
 1. Choose a theory paper and rewrite it to make it better. Choose and pick of what you include in your report. It may be better proofs. It may be better exposition of the results. Be critical about assumptions (but not overly critical). It may be putting the results into a perspective. Aim for readable (but technically correct) writeups.
-2. Choose a problem that you care about in the area. Ask what is known. Write a summary about it. Be specific about what problems you are writing about. If time permits and with some luck, add new results. Aim for small things, like, such and such is known in topic A but only under condition B. Do these results extend to condition C? What conditions are necessary? How about slightly changing the problem, for example switching from finite horizon to infinite horizon objectives? Multicriteria?
-3. Choose an open question and try to answer it. Loads of open questions are mentioned in the class. When there is an upper bound, ask whether there is a matching lower bound. If not quite, try to reduce the gap. Ditto for lower bounds. Any time you see a bound you can ask: Is this tight? The endnotes of the lectures on this website list some of the open questions.
-4. It is a bit more risky, but possibly more rewarding, is to choose a non-theory paper and look at it through the eyes of a theoretician. Are there any hard claims that could be formulated (and possibly proved) in the context of the paper? If the paper is proposing algorithms, are there *any* conditions when the algorithm proposed will work "well"? How well? Put the results into the context of what is known. Example: Is TRPO a sound algorithm? Say, in the tabular setting?
+2. Choose a problem that you care about in the area. Ask what is known. Write a summary about it. Be specific about what problems you are writing about. If time permits and with some luck, add new results. Aim for small things, like, such and such is known in topic A but only under condition B. Do these results extend to condition C? What conditions are necessary? How about slightly changing the problem, adding or removing a condition?
+3. Choose an open question and try to answer it. When there is an upper bound, ask whether there is a matching lower bound. If not quite, try to reduce the gap. Ditto for lower bounds. Any time you see a bound you can ask: Is this tight? 
+4. It is a bit more risky, but possibly more rewarding, is to choose a non-theory paper and look at it through the eyes of a theoretician. Are there any hard claims that could be formulated (and possibly proved) in the context of the paper? If the paper is proposing algorithms, are there *any* conditions when the algorithm proposed will work "well"? How well? Put the results into the context of what is known. 
 
 ## Formatting
 
@@ -101,13 +99,4 @@ They should have the standard structure:
 
 ## Examples of topics
 
-- Read *"Is Plug-in Solver Sample-Efficient for Feature-based Reinforcement Learning?"* [(link)](https://arxiv.org/abs/2010.05673) by Qiwen Cui and Lin F. Yang. Place the result in the framework of the class. Which problem are they solving? What are the pros and cons of what they do? What is the significance of the various assumptions? Are there assumptions we could be dropped? Relaxed? Would this extend to other model classes? What is the general lesson?
-
-- Read *"Variance-Aware Confidence Set: Variance-Dependent Bound for Linear Bandits and Horizon-Free Bound for Linear Mixture MDP"* [(link)](https://arxiv.org/abs/2101.12745) by Zihan Zhang, Jiaqi Yang, Xiangyang Ji, Simon S. Du, which is a follow-up to "Is Reinforcement Learning More Difficult Than Bandits? A Near-optimal Algorithm Escaping the Curse of Horizon" [(link)](https://arxiv.org/abs/2009.13503) by Zihan Zhang, Xiangyang Ji, Simon S. Du.
-Same questions as before. Do we expect the techniques to be practically useful? When? If not, why not? Can things be fixed up? Extensions to other settings, batch, planning? Infinite horizon problems would really test the limits.
-
-- We could go on and list all papers that appeared recently on RL theory (a long list, check out the [RL Theory Seminar pages](https://sites.google.com/view/rltheoryseminars/home) for some starting points). An alternative is to consider specific topics such as (1) how to deal with generalization (2) multiple criteria (3) robustness (4) long horizons beyond variance reduction (5) various model classes beyond linear and linear mixture MDPs (6) nonstationarity (7) value-aware model fitting -- is it a good idea? (8) better ways of exploring? is Information Directed Sampling the way to go? (9) what are the limits of adaptive algorithms in RL?
-
-- For further inspiration,
-visit the [project page](http://nanjiang.cs.illinois.edu/cs598project/) of the class that Nan Jiang taught recently,
-or [this page](https://wensun.github.io/CS6789projects.html) by Wen Sun and Sam Kakade.
+TBA
