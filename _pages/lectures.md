@@ -15,3 +15,5 @@ nav_order: 3
 | 4. | September 14, 2023| [PAC-Learnability](https://www.youtube.com/watch?v=GzkrMYkHxaA&t=2236s)|
 | 5. | September 19, 2023| [PAC-Learnability](https://www.youtube.com/watch?v=c9rN8eBjS3k)|
 | 6. | September 21, 2023| [Empirical Processes](https://www.youtube.com/watch?v=2hfHwMX__2k)|
+| 7. | September 26, 2023| [Empirical Processes](https://youtu.be/TNPwFhxjHXM)|
+| 8. | September 28, 2023| [Uniform Bernstein](https://youtu.be/z1oW05KzshM)|
