@@ -1,0 +1,320 @@
+\documentclass{article}
+\newcommand{\hwnumber}{1}
+\newif\ifincludepractice
+\includepracticefalse
+
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\abs}[1]{| #1 |}
+
+\usepackage{fullpage,amsthm,amsmath,amssymb}
+\usepackage{algorithm,algorithmic}
+\usepackage{mathtools}
+\usepackage{bbm,bm}
+\usepackage{enumerate}
+\usepackage{xspace}
+\usepackage[textsize=tiny,
+]{todonotes}
+\newcommand{\todot}[1]{\todo[color=blue!20!white]{T: #1}}
+\newcommand{\todoc}[1]{\todo[color=orange!20!white]{Cs: #1}}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=black]{hyperref}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Lap}{Lap}
+\DeclareMathOperator*{\Exp}{\mathbf{E}}
+\DeclareMathOperator*{\1}{\mathbbm{1}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\V}{\mathbb V}
+\renewcommand{\P}[1]{P\left\{ #1 \right\}}
+\newcommand{\Prob}[1]{\mathbb{P}( #1 )}
+\newcommand{\Probgr}[1]{\mathbb{P}\left( #1 \right)}
+\newcommand{\real}{\mathbb{R}}
+\renewcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\EE}[1]{\E[#1]}
+\newcommand{\bfone}{\1}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\cF}{\mathcal{F}}
+\usepackage[capitalize]{cleveref}
+\usepackage{xifthen}
+
+\newcounter{DocPoints} 
+\newcounter{QuestionPoints} 
+\newcommand{\points}[1]{	\par\mbox{}\par\noindent\hfill {\bf #1 points}	\addtocounter{DocPoints}{#1}
+	\addtocounter{QuestionPoints}{#1}
+}
+\newcommand{\tpoints}[1]{        	\ifthenelse{\isempty{#1}}	{	}	{		\addtocounter{DocPoints}{#1}
+		\addtocounter{QuestionPoints}{#1}
+	}													 	\par\mbox{}\par\noindent\hfill {Total: \bf \arabic{QuestionPoints}\xspace points}\par\mbox{}\par\hrule\hrule
+	\setcounter{QuestionPoints}{0}
+}
+\newcommand{\tpoint}[1]{
+	\tpoints{#1}
+}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem*{solution*}{Solution}
+
+\newcommand{\hint}{\noindent \textbf{Hint}:\xspace}
+
+\usepackage{hyperref}
+
+\newcommand{\epssub}{\delta}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\sA}{\mathcal{A}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{CMPUT 654: Theoretical Foundations of Machine Learning, Fall 2023\\ Midterm}}
+\end{center}
+
+\section*{Instructions}
+\textbf{Submissions}
+You need to submit a single PDF file, named {\tt midterm\_<name>.pdf} where {\tt <name>} is your name.
+The PDF file should include your typed up solutions (we strongly encourage to use pdf\LaTeX). 
+Write your name in the title of your PDF file.
+We provide a \LaTeX template that you are encouraged to use.
+To submit your PDF file you should send the PDF file via private message to Csaba on Slack before the deadline.
+
+
+\textbf{Collaboration and sources}
+Work on your own. You can use online resources, but no human help can be used.
+In your write-up you must acknowledge all the
+sources (books, webpages etc., including class notes.) 
+Failure to do so will be considered cheating.  
+Identical or similar write-ups will be considered cheating.
+Students are expected to understand and explain all the steps of their proofs.
+
+\textbf{Scheduling}
+Start early: It takes time to solve the problems, as well as to write down the solutions. Most problems should have a short solution (and you can refer to results we have learned about to shorten your solution). Don't repeat calculations that we did in the class unnecessarily.
+
+\vspace{0.3cm}
+
+\textbf{Deadline:} October 15, 2023 11:55pm
+
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\nS}{\mathrm{S}}
+\newcommand{\nA}{\mathrm{A}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\ip}[1]{\langle #1 \rangle}
+\newcommand{\one}[1]{\mathbb{I}\{#1\}}
+\newcommand{\KL}{\mathrm{KL}}
+
+\section*{Problems}
+
+There is only one problem, with many parts. The problem is just to finish 
+the problems in Question 2 of Assignment 1 that were worth zero marks in that Assignments. 
+Good news: Here you will get some good marks for solving these! Also, the last problem (dealing with the absolute value loss) is broken up into many small parts.
+For the details of the setup, see Assignment 1.
+
+The first question there was asking you to replace the Bretagnolle-Huber inequality with the Neyman-Pearson lemma.
+The form of Neyman-Pearson lemma that is most useful for our purposes looks as follows:
+\begin{theorem}[Neyman-Pearson Lemma]\label{thm:np}
+Let $P$ and $Q$ be probability measures on the same measurable space $(\Omega, \cF)$, and let $A \in \cF$ be an arbitrary event. Let $\mu$ be a measure on $(\Omega,\cF)$ such that $dP = p d\mu$ and $dQ = q d\mu$.
+Let $B\in \cF$, $\eta\ge 0$ be such that
+\begin{enumerate}[(a)]
+\item $P(A)\le P(B)$,
+\item $B\cap \{p>0 \text{ or } q>0\} \subset \{ q\ge \eta p\}$ and \label{eq:npa} 
+\item $B^c\cap \{p>0 \text{ or } q>0\} \subset \{ q\le \eta p\}$.  \label{eq:npb}
+\end{enumerate}
+Then,
+\begin{align*}
+Q(A^c)\ge Q(B^c)\,.
+\end{align*}
+\end{theorem} 
+This result implies the following corollary, which takes a form very close to the Bretagnolle-Huber inequality:
+\begin{corollary}\label{cor:np}
+Let $A_\eta = \{q\ge \eta p\}$.
+Let $r>0$ be such that $(0,r] \subseteq \{P(A_\eta)\,:\eta\ge 0\}$.
+Then, either $P(A)\ge r$, or
+\begin{align*}
+P(A)+Q(A^c) \ge \inf_{\eta\ge 0} P(A_\eta) + Q(A_\eta^c)\,.
+\end{align*}
+\end{corollary}
+Sometimes it is simpler to use a lower bound based on the total variation distance, 
+\[
+\delta(P,Q) = \sup_{A\in \cF} P(A) - Q(A) (=\sup_{A\in \cF} Q(A)-P(A))\,.
+\]
+For this, we have the following result:
+\begin{proposition}\label{prop:tvlb}
+Let $P$ and $Q$ be probability measures on the same measurable space $(\Omega, \cF)$, and let $A \in \cF$ be an arbitrary event. Then,
+\begin{align*}
+P(A)+Q(A^c) \ge 1 - \delta(P,Q)\,.
+\end{align*}
+\end{proposition} 
+
+\begin{question}
+\mbox{}
+
+\begin{enumerate}[(Q1)]
+
+\item Prove \cref{thm:np}.
+
+\hint 
+Investigate the sign of $(\chi_B - \chi_A)(q-\eta p)$ on $\{p>0 \text{ or } q>0\}$. Here, 
+$\chi_A$ ($\chi_B$) is the characteristic function of set $A$ (respectively, $B$): $\chi_A(\omega) = \one{\omega\in A}$, $\omega\in \Omega$.
+
+\points{10}
+
+\item Prove \cref{cor:np}
+\points{10}
+
+\item Prove \cref{prop:tvlb}
+
+\points{5}
+
+\item Solve Part (i), Question 2: 
+``Use the Neyman-Pearson lemma instead of Theorem~1 
+to prove an analogue of Equation (6).
+Compare with Equation(6); the numerical constant in the lower bound should be at least three times larger than there.''
+
+\hint
+Use \cref{cor:np} together with the inequality
+\[
+\overline\Phi(y) \ge \sqrt{\frac{2}{\pi}} \frac{\exp(-y^2/2)}{y + \sqrt{y^2+4}}\,,
+\]
+which holds for any $y\in \R$. 
+Here,  $\overline\Phi$ denotes the complementary CDF of the standard normal Gaussian:
+$\overline\Phi(z) = \frac{1}{\sqrt{2\pi}} \int_z^\infty e^{-x^2/2} dx$, $z\in \R$.
+\points{30}
+
+\item  Solve Part (j), Question 2: 
+``How would the results look like if the quadratic loss was replaced with its scaled version:
+$\ell_c(u,v) = c (u-v)^2$, $u,v\in \R$, $c>0$.''
+
+\points{10}
+
+\item  In the remaining problems we work on solving Part (k), Question 2:  ``Recalculate the minimax lower bound 
+from Part~(g) for the
+absolute value loss: $\ell(u,v) = |u-v|$, $u,v\in \R$.
+Also show that $R^*(\sigma^2) \le \sigma$.
+What differences do you observe compared to the squared loss?''
+This is broken up into multiple parts. As it turns out for this loss the median plays the role that the mean played in the case of squared loss. As such, we start with a warm-up problem:
+
+Recall that the median of a distribution $P$ defined over the reals is any value $m\in \R$, such that $\Prob{Y\le m}\le 1/2$ and $\Prob{Y\ge m}\le 1/2$, where $Y\sim P$.
+Fix $P$ in an arbitrary fashion. Let $\text{Med}(P)$ be the set of medians of $P$. Show that $\text{Med}(P)$ is a closed interval (and hence is non-empty).
+
+\points{10}
+
+\item By overloading $L$, introduce $L(P,a) = \int |y-a| P(dy)$ for $a\in \R$. Let $m$ be any median of $P$. Show that 
+$L(P,m)\le L(P,a)$ for any $a\in \R$.
+
+\points{10}
+\item Show that $L^*(P)=L(P,m)$.
+
+\points{5}
+
+\item Show that $R^*(\sigma^2) \le \sigma$.
+\points{10}
+
+\item We need to turn to the lower bound. 
+Fix  $P$ so that zero is a median of $P$ and let
+\begin{align*}
+r_P(a) = \EE{|a-V|-|V|}
+\end{align*}
+where $V\sim P$.
+Show that for any method $\cA:\R \to \R$,
+\begin{align}\label{eq:riskexp}
+R(P,\cA) = \int r_P(\cA(y)) P(dy) \,.
+\end{align}
+
+\points{10}
+\item Show that $r_P$ is differentiable and its derivative, $r_P'$ satisfies $r_P'(a) = P((-\infty,a])-P([a,\infty))$ for any $a\in \R$ such that $P(\{a\})\ne 0$.
+
+\hint Recall that a function $f:\R \to \R$ is differentiable at some point $a\in \R$ with derivative $d\in \R$ if $f(a+h) - f(a) = d h + o(h)$ as $h\to 0$.
+
+\points{10}
+
+\item Let $P$ be a non-atomic distribution; i.e., $P$ is such that for any $a\in \R$, $P(\{a\}) = 0$.
+Show that $r_P$ is increasing on $[m,\infty)$ and decreasing on $(-\infty,m]$ for any median $m$ of $P$.
+
+\points{10}
+
+\item \label{p:risk2prob}
+
+Let  $P $ be any non-atomic distribution, $m\in \text{Med}(P)$ and fix an arbitrary method $\cA:\R \to \R$. Show that for any $s\ge 0$,
+\begin{align}\label{eq:risklblap}
+R(P,\cA) \ge  \max( P(E_+(s)),P(E_-(s))) r^*_P(s)\,,
+\end{align}
+where $r^*_P(s) = \min(r_P(m+s),r_P(m-s))$ and
+where $E_+(s) = \{y\in \R\,:\, \cA(y)\ge m+ s\}$
+and $E_-(s) = \{y\in \R\,:\, \cA(y)\le m- s\}$.
+
+\points{5}
+
+\item 
+Let $P = \Lap(0,\lambda)$ for $\lambda>0$ fixed.
+Show that for any $a\in \R$, $r_P(a)=r_P(-a)$,
+while for $a\ge 0$, 
+\begin{align*}
+r_P(a) 
+ & = a-\lambda + \lambda e^{-a/\lambda}\,.
+\end{align*}
+
+\hint
+Recall that the density function of $\Lap(\mu,\lambda)$, the Laplace distribution with mean (and median) $\mu$ and scale parameter $\lambda$ is 
+\begin{align*}
+p(x) = \frac{1}{2\lambda} e^{-|x-\mu|/\lambda}\,, \qquad x\in \R\,.
+\end{align*}
+
+\points{5}
+
+
+\item Show that there exist an absolute constant $c>0$ such that 
+$R^*(\sigma^2) \ge  c \sigma$.
+
+\hint Use Laplace distributions for tractability, together with \cref{prop:tvlb}. For using the total variation distance recall that if $dP = p d\mu$ and $dQ = q d\mu$ for some measure $\mu$ on $(\Omega,\cF)$ then 
+\begin{align}\label{eq:tvip}
+\delta(P,Q) = \frac12 \int |p-q| d\mu.
+\end{align}
+\points{15}
+
+\end{enumerate}
+ 
+\tpoints{}
+\end{question}
+
+
+
+
+
+\bigskip
+\bigskip
+
+\noindent
+\textbf{
+Total for all questions: \arabic{DocPoints}}.
+Of this, \textcolor{red}{25} are bonus marks. 
+Your midterm will be marked out of \textcolor{red}{125}.
+
+
+\end{document}
+
+
+
+
+
