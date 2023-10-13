@@ -215,16 +215,17 @@ Also show that $R^*(\sigma^2) \le \sigma$.
 What differences do you observe compared to the squared loss?''
 This is broken up into multiple parts. As it turns out for this loss the median plays the role that the mean played in the case of squared loss. As such, we start with a warm-up problem:
 
-Recall that the median of a distribution $P$ defined over the reals is any value $m\in \R$, such that $\Prob{Y\le m}\le 1/2$ and $\Prob{Y\ge m}\le 1/2$, where $Y\sim P$.
+Recall that the median of a distribution $P$ defined over the reals is any value $m\in \R$, such that $\Prob{Y\le m}\le 1/2$ and $\Prob{Y\ge m}\ge 1/2$, where $Y\sim P$.
 Fix $P$ in an arbitrary fashion. Let $\text{Med}(P)$ be the set of medians of $P$. Show that $\text{Med}(P)$ is a closed interval (and hence is non-empty).
 
 \points{10}
 
-\item By overloading $L$, introduce $L(P,a) = \int |y-a| P(dy)$ for $a\in \R$. Let $m$ be any median of $P$. Show that 
+\item By overloading $L$, introduce $L(P,a) = \int |y-a| P(dy)$ for $a\in \R$. Let $P$ be an arbitrary probability distribution over the reals, $m$ be any median of $P$. Show that 
 $L(P,m)\le L(P,a)$ for any $a\in \R$.
 
 \points{10}
-\item Show that $L^*(P)=L(P,m)$.
+\item For same $P$ and $m$ as in the previous part,
+show that $L^*(P)=L(P,m)$.
 
 \points{5}
 
@@ -250,7 +251,8 @@ R(P,\cA) = \int r_P(\cA(y)) P(dy) \,.
 \points{10}
 
 \item Let $P$ be a non-atomic distribution; i.e., $P$ is such that for any $a\in \R$, $P(\{a\}) = 0$.
-Show that $r_P$ is increasing on $[m,\infty)$ and decreasing on $(-\infty,m]$ for any median $m$ of $P$.
+Let $m$ be a median of $P$, $r_P(a) = \EE{ |a-V|-|m-V|}$.
+Show that $r_P$ is increasing on $[m,\infty)$ and decreasing on $(-\infty,m]$.
 
 \points{10}
 
