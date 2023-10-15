@@ -19,3 +19,5 @@ nav_order: 3
 | 8. | September 28, 2023| [Uniform Bernstein](https://youtu.be/z1oW05KzshM)|
 | 9. | October 3, 2023| [Symmetrization Lemma](https://youtu.be/G5BBy9r2vF4)|
 | 10. | October 5, 2023| [Empirical Covering Numbers](https://youtu.be/wWv4OVYhV5U)|
+| 11. | October 10, 2023| [---](https://youtu.be/x9Dz7GwrE9g)|
+| 12. | October 12, 2023| [---](https://youtu.be/ZEAsFMYaKYI)|
