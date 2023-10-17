@@ -22,14 +22,14 @@
   },"3": {
     "doc": "Recorded lectures",
     "title": "Recorded lectures",
-    "content": "# Recorded lectures | # | Date | Lecture Videos |:---|:------------|:--------------| 1. | September 5, 2023| [Introduction](https://www.youtube.com/watch?v=arbGdCqn2Io) | 2. | September 7, 2023| [Concentration of Measure](https://www.youtube.com/watch?v=TBnSm-vYTPs)| ",
+    "content": "| # | Date | Lecture Videos | . | 1. | September 5, 2023 | Introduction | . | 2. | September 7, 2023 | Concentration of Measure | . | 3. | September 12, 2023 | Concentration of Measure | . | 4. | September 14, 2023 | PAC-Learnability | . | 5. | September 19, 2023 | PAC-Learnability | . | 6. | September 21, 2023 | Empirical Processes | . | 7. | September 26, 2023 | Empirical Processes | . | 8. | September 28, 2023 | Uniform Bernstein | . | 9. | October 3, 2023 | Symmetrization Lemma | . | 10. | October 5, 2023 | Empirical Covering Numbers | . | 11. | October 10, 2023 | — | . | 12. | October 12, 2023 | — | . ",
     "url": "/pages/lectures/",
     
     "relUrl": "/pages/lectures/"
   },"4": {
     "doc": "Scribes",
     "title": "Scribes",
-    "content": "Scribes of lectures will be posted here as they get ready. | # | Date | Scribes | Status | . | 1. | September 5, 2023 | Introduction | V0.5 | . | 2. | September 7, 2023 | Concentration of Measure | V0.1 | . | 3. | September 12, 2023 | Concentration of Measure | V0.1 | . ",
+    "content": "Scribes of lectures will be posted here as they get ready. | # | Date | Scribes | Status | . | 1. | September 5, 2023 | Introduction | V0.5 | . | 2. | September 7, 2023 | Concentration of Measure | V0.1 | . | 3. | September 12, 2023 | Concentration of Measure | V0.1 | . | 4. | September 14, 2023 | PAC-Learnability | V0.1 | . | 5. | September 19, 2023 | PAC-Learnability | V0.1 | . | 6. | September 21, 2023 | Empirical Processes | V0.1 | . | 7. | September 26, 2023 | Empirical Processes | V0.1 | . | 8. | September 28, 2023 | Uniform Bernstein | V0.1 | . ",
     "url": "/pages/scribes/",
     
     "relUrl": "/pages/scribes/"
