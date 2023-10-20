@@ -19,7 +19,7 @@ nav_order: 3
 | 8. | Sept 28, 2023| [Uniform Bernstein](https://youtu.be/z1oW05KzshM)|[pdf](/documents/scribes/fall_2024/lec08.pdf) | V0.0 |
 | 9. | Oct 3, 2023| [Symmetrization Lemma](https://youtu.be/G5BBy9r2vF4)|[pdf](/documents/scribes/fall_2024/lec09.pdf) | V0.0 |
 | 10. | Oct 5, 2023| [Empirical Covering Numbers](https://youtu.be/wWv4OVYhV5U)|[pdf](/documents/scribes/fall_2024/lec10.pdf) | V0.0 |
-| 11. | Oct 10, 2023| [---](https://youtu.be/x9Dz7GwrE9g)|[pdf](/documents/scribes/fall_2024/lec11.pdf) | V0.0 |
-| 12. | Oct 12, 2023| [---](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec12.pdf) | V0.0 |
-| 13. | Oct 17, 2023| [---](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec13.pdf) | V0.0 |
-| 14. | Oct 19, 2023| [---](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
+| 11. | Oct 10, 2023| [Empirical Covering Numbers](https://youtu.be/x9Dz7GwrE9g)|[pdf](/documents/scribes/fall_2024/lec11.pdf) | V0.0 |
+| 12. | Oct 12, 2023| [VC Dimension](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec12.pdf) | V0.0 |
+| 13. | Oct 17, 2023| [Packing & Covering Numbers](https://youtu.be/T86QA3JiQlg)|[pdf](/documents/scribes/fall_2024/lec13.pdf) | V0.0 |
+| 14. | Oct 19, 2023| [Covering Number Estimates](https://youtu.be/8lrO6HAyhB4)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
