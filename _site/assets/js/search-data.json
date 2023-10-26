@@ -7,29 +7,78 @@
     "relUrl": "/pages/about/"
   },"1": {
     "doc": "The work you do",
+    "title": "The Work You Do",
+    "content": "| Component | Weight | Deadline | PDF and LaTex | . | Assignment 1 | 10% | September 24, 2023 11:55pm | PDF and LaTex | . | Assignment 2 | 10% | October 8, 2023 11:55pm | PDF and LaTex | . | Midterm | 20% | October 15, 2023 11:55pm | PDF and LaTex | . | Project (Proposal) | 10% | October 29, 2023 11:55pm | PDF and LaTex | . | Assignment 3 | 10% | November 12, 2023 11:55pm | PDF and LaTex | . | Assignment 4 | 10% | November 26, 2023 11:55pm | PDF and LaTex | . | Project (Presentation) | 10% | December 5 and 7, 2023 (in class) |   | . | Project (Report) | 20% | December 10, 2023 11:55pm |   | . ",
+    "url": "/pages/assignments/#the-work-you-do",
+    
+    "relUrl": "/pages/assignments/#the-work-you-do"
+  },"2": {
+    "doc": "The work you do",
+    "title": "Late Policy",
+    "content": "Late submissions will NOT be accepted, but to allow for flexibility in case of issues for any reason to submit solutions in time, 10% of the mark can be shifted from any component to the midterm. ",
+    "url": "/pages/assignments/#late-policy",
+    
+    "relUrl": "/pages/assignments/#late-policy"
+  },"3": {
+    "doc": "The work you do",
+    "title": "Course Project",
+    "content": " ",
+    "url": "/pages/assignments/#course-project",
+    
+    "relUrl": "/pages/assignments/#course-project"
+  },"4": {
+    "doc": "The work you do",
+    "title": "Deadlines",
+    "content": ". | Proposal: October 29, 2023 11:55pm | Presentations: December 5 and 7, 2023, in class | Report: December 10, 2023 11:55pm | . ",
+    "url": "/pages/assignments/#deadlines",
+    
+    "relUrl": "/pages/assignments/#deadlines"
+  },"5": {
+    "doc": "The work you do",
+    "title": "Objective and evaluation",
+    "content": "The project should be done individually or in a group of two (maximum group size of two). The goal is for everyone to get a taste of how it is to work on theoretical aspects of machine learning. In the project, you do not actually need to produce research paper quality results (although if you do, no one will complain!). It is sufficient to demonstrate a thorough understanding of some aspect of the theory literature, such as: . | What are the interesting questions to ask (and what are less interesting questions?) | What is known about a given topic (and what is not known)? | Sorting out whether some assumption is critical for some result (or not). | . When evaluating the reports, we will not care that much about originality (new results) than coherence, soundness and the quality of writing. In fact, a typical report is expected to be a readable (and possibly entertaining) summary of a topic in the area. Reports that contain original results are also welcome, just to earn full grade, originality is absolutely not required. We strongly recommend to start small: Aim for writing a review of some results of interest. If time permits and as you feel fit, add new results. Having said this, if you score a new result early on, it is also OK to start on writing that result down. ",
+    "url": "/pages/assignments/#objective-and-evaluation",
+    
+    "relUrl": "/pages/assignments/#objective-and-evaluation"
+  },"6": {
+    "doc": "The work you do",
+    "title": "How to choose a topic?",
+    "content": ". | Choose a theory paper and rewrite it to make it better. Choose and pick of what you include in your report. It may be better proofs. It may be better exposition of the results. Be critical about assumptions (but not overly critical). It may be putting the results into a perspective. Aim for readable (but technically correct) writeups. | Choose a problem that you care about in the area. Ask what is known. Write a summary about it. Be specific about what problems you are writing about. If time permits and with some luck, add new results. Aim for small things, like, such and such is known in topic A but only under condition B. Do these results extend to condition C? What conditions are necessary? How about slightly changing the problem, adding or removing a condition? | Choose an open question and try to answer it. When there is an upper bound, ask whether there is a matching lower bound. If not quite, try to reduce the gap. Ditto for lower bounds. Any time you see a bound you can ask: Is this tight? | It is a bit more risky, but possibly more rewarding, is to choose a non-theory paper and look at it through the eyes of a theoretician. Are there any hard claims that could be formulated (and possibly proved) in the context of the paper? If the paper is proposing algorithms, are there any conditions when the algorithm proposed will work “well”? How well? Put the results into the context of what is known. | . ",
+    "url": "/pages/assignments/#how-to-choose-a-topic",
+    
+    "relUrl": "/pages/assignments/#how-to-choose-a-topic"
+  },"7": {
+    "doc": "The work you do",
+    "title": "Formatting",
+    "content": "The reports should be typeset in latex and sent as a pdf document. The template is available here. The report should be maximum 9 pages long, the proposal maximum 2 pages long. They should have the standard structure: . | Introduction (what is the problem studied, why do we study it) | Results (the “meat”) | Conclusions/summary (what did we learn? what is the short take-away from all of this? what’s next if anything?) | . ",
+    "url": "/pages/assignments/#formatting",
+    
+    "relUrl": "/pages/assignments/#formatting"
+  },"8": {
+    "doc": "The work you do",
+    "title": "Examples of topics",
+    "content": "TBA . ",
+    "url": "/pages/assignments/#examples-of-topics",
+    
+    "relUrl": "/pages/assignments/#examples-of-topics"
+  },"9": {
+    "doc": "The work you do",
     "title": "The work you do",
-    "content": "# The Work You Do | Component | Weight | Deadline | PDF and LaTex |:---|:---|:---------|:----| Assignment 1 | 10% | September 24, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment1.pdf) and [LaTex](/documents/assignments/fall_2024/assignment1.tex) | Assignment 2 | 10% | October 8, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment2.pdf) and [LaTex](/documents/assignments/fall_2024/assignment2.tex) | Midterm | 20% | October 15, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/midterm.pdf) and [LaTex](/documents/assignments/fall_2024/midterm.tex)| Project (Proposal) | 10% | October 29, 2023 11:55pm || Assignment 3 | 10% | November 12, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment3.pdf) and [LaTex](/documents/assignments/fall_2024/assignment3.tex) | Assignment 4 | 10%| November 26, 2023 11:55pm |[PDF](/documents/assignments/fall_2024/assignment4.pdf) and [LaTex](/documents/assignments/fall_2024/assignment4.tex) | Project (Presentation) | 10% | December 5 and 7, 2023 (in class)|| Project (Report) | 20% | December 10, 2023 11:55pm || --- # Late Policy Late submissions will NOT be accepted, but to allow for flexibility in case of issues for any reason to submit solutions in time, 10% of the mark can be shifted from any component to the midterm. # Course Project ## Deadlines - Proposal: October 29, 2023 11:55pm - Presentations: December 5 and 7, 2023, in class - Report: December 10, 2023 11:55pm ## Objective and evaluation The project should be done individually or in a group of two (maximum group size of two). The goal is for everyone to get a taste of how it is to work on theoretical aspects of machine learning. In the project, you do not actually need to produce research paper quality results (although if you do, no one will complain!). It is sufficient to demonstrate a **thorough understanding** of some aspect of the theory literature, such as: - What are the interesting questions to ask (and what are less interesting questions?) - What is known about a given topic (and what is not known)? - Sorting out whether some assumption is critical for some result (or not). When evaluating the reports, we will not care that much about originality (new results) than coherence, soundness and the quality of writing. In fact, a typical report is expected to be a readable (and possibly entertaining) summary of a topic in the area. Reports that contain original results are also welcome, just to earn full grade, originality is absolutely not required. {: .text-center} *We strongly recommend to start small: Aim for writing a review of some results of interest. If time permits and as you feel fit, add new results.* {: .text-left} Having said this, if you score a new result early on, it is also OK to start on writing that result down. ## How to choose a topic? 1. Choose a theory paper and rewrite it to make it better. Choose and pick of what you include in your report. It may be better proofs. It may be better exposition of the results. Be critical about assumptions (but not overly critical). It may be putting the results into a perspective. Aim for readable (but technically correct) writeups. 2. Choose a problem that you care about in the area. Ask what is known. Write a summary about it. Be specific about what problems you are writing about. If time permits and with some luck, add new results. Aim for small things, like, such and such is known in topic A but only under condition B. Do these results extend to condition C? What conditions are necessary? How about slightly changing the problem, adding or removing a condition? 3. Choose an open question and try to answer it. When there is an upper bound, ask whether there is a matching lower bound. If not quite, try to reduce the gap. Ditto for lower bounds. Any time you see a bound you can ask: Is this tight? 4. It is a bit more risky, but possibly more rewarding, is to choose a non-theory paper and look at it through the eyes of a theoretician. Are there any hard claims that could be formulated (and possibly proved) in the context of the paper? If the paper is proposing algorithms, are there *any* conditions when the algorithm proposed will work \"well\"? How well? Put the results into the context of what is known. ## Formatting The reports should be typeset in latex and sent as a pdf document. **The template is available [here](/documents/misc_files/project_template.tex)**. The report should be maximum 9 pages long, the proposal maximum 2 pages long. They should have the standard structure: - Introduction (what is the problem studied, why do we study it) - Results (the \"meat\") - Conclusions/summary (what did we learn? what is the short take-away from all of this? what's next if anything?) ## Examples of topics TBA ",
+    "content": " ",
     "url": "/pages/assignments/",
     
     "relUrl": "/pages/assignments/"
-  },"2": {
+  },"10": {
     "doc": "Home",
     "title": "Home",
     "content": "# Welcome This is the homepage of the course: **Theoretical Foundations of Machine Learning** taught by [Csaba Szepesv&aacute;ri](https://sites.ualberta.ca/~szepesva/) at the [University of Alberta](https://www.ualberta.ca/). Additional information and resources can be accessed from the sidepane on the left. The main website pages are under the heading **PAGES** and the course notes for this year are organized under the heading **LECTURE NOTES**. The course notes from previous years are in the headings below. | This will be good! . | . ",
     "url": "/",
     
     "relUrl": "/"
-  },"3": {
-    "doc": "Lectures",
-    "title": "Recorded lectures and scribes",
-    "content": "| # | Date | Lecture Videos | Scribes | Status | . | 1. | Sept 5, 2023 | Introduction | pdf | V0.5 | . | 2. | Sept 7, 2023 | Concentration of Measure | pdf | V0.1 | . | 3. | Sept 12, 2023 | Concentration of Measure | pdf | V0.1 | . | 4. | Sept 14, 2023 | PAC-Learnability | pdf | V0.1 | . | 5. | Sept 19, 2023 | PAC-Learnability | pdf | V0.1 | . | 6. | Sept 21, 2023 | Empirical Processes | pdf | V0.1 | . | 7. | Sept 26, 2023 | Empirical Processes | pdf | V0.1 | . | 8. | Sept 28, 2023 | Uniform Bernstein | pdf | V0.0 | . | 9. | Oct 3, 2023 | Symmetrization Lemma | pdf | V0.0 | . | 10. | Oct 5, 2023 | Empirical Covering Numbers | pdf | V0.0 | . | 11. | Oct 10, 2023 | — | pdf | V0.0 | . | 12. | Oct 12, 2023 | — | pdf | V0.0 | . | 13. | Oct 17, 2023 | — | pdf | V0.0 | . | 14. | Oct 19, 2023 | — | pdf | V0.0 | . ",
-    "url": "/pages/lectures/#recorded-lectures-and-scribes",
-    
-    "relUrl": "/pages/lectures/#recorded-lectures-and-scribes"
-  },"4": {
+  },"11": {
     "doc": "Lectures",
     "title": "Lectures",
-    "content": " ",
+    "content": "# Recorded lectures and scribes | # | Date | Lecture Videos | Scribes | Status |----|-------------|----------------|---------|--------| 1. | Sept 5, 2023| [Introduction](https://www.youtube.com/watch?v=arbGdCqn2Io) |[pdf](/documents/scribes/fall_2024/lec01.pdf) | V0.5 | 2. | Sept 7, 2023| [Concentration of Measure](https://www.youtube.com/watch?v=TBnSm-vYTPs)|[pdf](/documents/scribes/fall_2024/lec02.pdf) | V0.1 | 3. | Sept 12, 2023| [Concentration of Measure](https://www.youtube.com/watch?v=S0aY_0SY-WA)|[pdf](/documents/scribes/fall_2024/lec03.pdf) | V0.1 | 4. | Sept 14, 2023| [PAC-Learnability](https://www.youtube.com/watch?v=GzkrMYkHxaA&t=2236s)|[pdf](/documents/scribes/fall_2024/lec04.pdf) | V0.1 | 5. | Sept 19, 2023| [PAC-Learnability](https://www.youtube.com/watch?v=c9rN8eBjS3k)|[pdf](/documents/scribes/fall_2024/lec05.pdf) | V0.1 | 6. | Sept 21, 2023| [Empirical Processes](https://www.youtube.com/watch?v=2hfHwMX__2k)|[pdf](/documents/scribes/fall_2024/lec06.pdf) | V0.1 | 7. | Sept 26, 2023| [Empirical Processes](https://youtu.be/TNPwFhxjHXM)|[pdf](/documents/scribes/fall_2024/lec07.pdf) | V0.1 | 8. | Sept 28, 2023| [Uniform Bernstein](https://youtu.be/z1oW05KzshM)|[pdf](/documents/scribes/fall_2024/lec08.pdf) | V0.0 | 9. | Oct 3, 2023| [Symmetrization Lemma](https://youtu.be/G5BBy9r2vF4)|[pdf](/documents/scribes/fall_2024/lec09.pdf) | V0.0 | 10. | Oct 5, 2023| [Empirical Covering Numbers](https://youtu.be/wWv4OVYhV5U)|[pdf](/documents/scribes/fall_2024/lec10.pdf) | V0.0 | 11. | Oct 10, 2023| [Empirical Covering Numbers](https://youtu.be/x9Dz7GwrE9g)|[pdf](/documents/scribes/fall_2024/lec11.pdf) | V0.0 | 12. | Oct 12, 2023| [VC Dimension](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec12.pdf) | V0.0 | 13. | Oct 17, 2023| [Packing & Covering Numbers](https://youtu.be/T86QA3JiQlg)|[pdf](/documents/scribes/fall_2024/lec13.pdf) | V0.0 | 14. | Oct 19, 2023| [Covering Number Estimates](https://youtu.be/8lrO6HAyhB4)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 | ",
     "url": "/pages/lectures/",
     
     "relUrl": "/pages/lectures/"
