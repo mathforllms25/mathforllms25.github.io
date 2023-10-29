@@ -23,3 +23,5 @@ nav_order: 3
 | 12. | Oct 12, 2023| [VC Dimension](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec12.pdf) | V0.0 |
 | 13. | Oct 17, 2023| [Packing & Covering Numbers](https://youtu.be/T86QA3JiQlg)|[pdf](/documents/scribes/fall_2024/lec13.pdf) | V0.0 |
 | 14. | Oct 19, 2023| [Covering Number Estimates](https://youtu.be/8lrO6HAyhB4)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
+| 15. | Oct 24, 2023| [Rademacher Complexity](https://youtu.be/90k5cs7ZSDc)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
+| 16. | Oct 26, 2023| [Rademacher Complexity and Chaining](https://youtu.be/BeP8z_kpOH0)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
