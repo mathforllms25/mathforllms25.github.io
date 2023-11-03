@@ -25,3 +25,5 @@ nav_order: 3
 | 14. | Oct 19, 2023| [Covering Number Estimates](https://youtu.be/8lrO6HAyhB4)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
 | 15. | Oct 24, 2023| [Rademacher Complexity](https://youtu.be/90k5cs7ZSDc)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
 | 16. | Oct 26, 2023| [Rademacher Complexity and Chaining](https://youtu.be/BeP8z_kpOH0)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
+| 17. | Oct 31, 2023| [Stability Analysis](https://youtu.be/iKbuZdbwHKk)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
+| 18. | Nov 2, 2023| [Stability Analysis](https://youtu.be/5wwjt-MSNGI)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
