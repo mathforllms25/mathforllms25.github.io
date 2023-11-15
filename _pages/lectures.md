@@ -23,7 +23,8 @@ nav_order: 3
 | 12. | Oct 12, 2023| [VC Dimension](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec12.pdf) | V0.0 |
 | 13. | Oct 17, 2023| [Packing & Covering Numbers](https://youtu.be/T86QA3JiQlg)|[pdf](/documents/scribes/fall_2024/lec13.pdf) | V0.0 |
 | 14. | Oct 19, 2023| [Covering Number Estimates](https://youtu.be/8lrO6HAyhB4)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
-| 15. | Oct 24, 2023| [Rademacher Complexity](https://youtu.be/90k5cs7ZSDc)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
-| 16. | Oct 26, 2023| [Rademacher Complexity and Chaining](https://youtu.be/BeP8z_kpOH0)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
-| 17. | Oct 31, 2023| [Stability Analysis](https://youtu.be/iKbuZdbwHKk)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
-| 18. | Nov 2, 2023| [Stability Analysis](https://youtu.be/5wwjt-MSNGI)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.0 |
+| 15. | Oct 24, 2023| [Rademacher Complexity](https://youtu.be/90k5cs7ZSDc)|[pdf](/documents/scribes/fall_2024/lec15.pdf) | V0.0 |
+| 16. | Oct 26, 2023| [Rademacher Complexity and Chaining](https://youtu.be/BeP8z_kpOH0)|[pdf](/documents/scribes/fall_2024/lec16.pdf) | V0.0 |
+| 17. | Oct 31, 2023| [Stability Analysis](https://youtu.be/iKbuZdbwHKk)|[pdf](/documents/scribes/fall_2024/lec17.pdf) | V0.0 |
+| 18. | Nov 2, 2023| [Stability Analysis](https://youtu.be/5wwjt-MSNGI)|[pdf](/documents/scribes/fall_2024/lec18.pdf) | V0.0 |
+| 19. | Nov 9, 2023| [Model Selection](https://youtu.be/A_Ut1Q-RN2U)|[pdf](/documents/scribes/fall_2024/lec19.pdf) | V0.0 |
