@@ -28,3 +28,5 @@ nav_order: 3
 | 17. | Oct 31, 2023| [Stability Analysis](https://youtu.be/iKbuZdbwHKk)|[pdf](/documents/scribes/fall_2024/lec17.pdf) | V0.0 |
 | 18. | Nov 2, 2023| [Stability Analysis](https://youtu.be/5wwjt-MSNGI)|[pdf](/documents/scribes/fall_2024/lec18.pdf) | V0.0 |
 | 19. | Nov 9, 2023| [Model Selection](https://youtu.be/A_Ut1Q-RN2U)|[pdf](/documents/scribes/fall_2024/lec19.pdf) | V0.0 |
+| 20. | Nov 21, 2023| [Kernel Methods](https://youtu.be/XSdE7t-VFfI)|[pdf](/documents/scribes/fall_2024/lec20.pdf) | V0.0 |
+| 21. | Nov 23, 2023| [Kernel Methods](https://youtu.be/C55h4gHKoOQ)|[pdf](/documents/scribes/fall_2024/lec21.pdf) | V0.0 |
