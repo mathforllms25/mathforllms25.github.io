@@ -13,10 +13,14 @@ comments: true
 | Assignment 2 | 10% | October 8, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment2.pdf) and [LaTex](/documents/assignments/fall_2024/assignment2.tex) |
 | Midterm      | 20% | October 15, 2023 11:55pm | [PDF](/documents/assignments/fall_2024/midterm.pdf) and [LaTex](/documents/assignments/fall_2024/midterm.tex)|
 | Project (Proposal) | 10% | October 29, 2023 11:55pm |[PDF](/documents/assignments/fall_2024/project_template.pdf) and [LaTex](/documents/assignments/fall_2024/project_template.tex)|
-| Assignment 3 | 10% | November 12,    2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment3.pdf) and [LaTex](/documents/assignments/fall_2024/assignment3.tex) |
-| Assignment 4 | 10%| November 26,    2023 11:55pm |[PDF](/documents/assignments/fall_2024/assignment4.pdf) and [LaTex](/documents/assignments/fall_2024/assignment4.tex) |
+| Assignment 3/4 | 20%| December 10,    2023 11:55pm |[PDF](/documents/assignments/fall_2024/assignment4.pdf) and [LaTex](/documents/assignments/fall_2024/assignment4.tex) |
 | Project (Presentation) | 10% | December 5 and 7, 2023 (in class)||
 | Project (Report) | 20% | December 10, 2023 11:55pm ||
+
+<!--
+| Assignment 3 | 10% | November 12,    2023 11:55pm | [PDF](/documents/assignments/fall_2024/assignment3.pdf) and [LaTex](/documents/assignments/fall_2024/assignment3.tex) |
+| Assignment 4 | 10%| November 26,    2023 11:55pm |[PDF](/documents/assignments/fall_2024/assignment4.pdf) and [LaTex](/documents/assignments/fall_2024/assignment4.tex) |
+-->
 
 
 <!-- | Assignment 1 | January 25,  2022 11:55pm | [PDF](/documents/assignments/assignment1.pdf) and [LaTex](/documents/assignments/assignment1.tex)|
