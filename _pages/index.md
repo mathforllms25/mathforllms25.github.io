@@ -8,7 +8,8 @@ permalink: /
 # Welcome
 
 
-This is the homepage of the course: **Mathematical Foundations for Reasoning in Large Language Models** taught by [Csaba Szepesv&aacute;ri](https://sites.ualberta.ca/~szepesva/) at the [University of Alberta](https://www.ualberta.ca/) in the fall of 2025.
+This is the homepage of the course: 
+**Mathematical Foundations for Reasoning in Large Language Models** taught by [Csaba Szepesv&aacute;ri](https://sites.ualberta.ca/~szepesva/) at the [University of Alberta](https://www.ualberta.ca/) in the fall of 2025.
 
 Additional information and resources can be accessed from the sidepane on the left. 
 

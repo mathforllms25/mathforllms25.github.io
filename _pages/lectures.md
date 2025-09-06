@@ -38,7 +38,8 @@ The course is divided into two main parts. The first part consists of instructor
 
   * *Topics:* Why exact learning is necessary for general intelligence; The fundamental misalignment between statistical learning and sound reasoning.
   * *Readings:*
-      * "Beyond Statistical Learning: Exact Learning Is Essential for General Intelligence" (György, Lattimore, Lazić, Szepesvári, 2025) [[Link](https://arxiv.org/abs/2506.23908)]
+      * "Beyond Statistical Learning: Exact Learning Is Essential for General Intelligence" 
+      (György, Lattimore, Lazić, Szepesvári, 2025) [[Link](https://arxiv.org/abs/2506.23908)]
 
 -----
 

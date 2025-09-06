@@ -6,6 +6,7 @@ permalink: /schedule/
 
 ### Course Schedule
 
+
 | Week | Dates | Part | Topic / Activity |
 |:----:|:------------|:---------------|:-----------------------------------------------|
 | 1 | Sep 2, 4 | I. Foundations | **Introduction & A Language for Transformers** |

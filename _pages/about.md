@@ -12,7 +12,8 @@ permalink: /about/
 
 This graduate-level seminar moves beyond empirical observations to rigorously investigate the mathematical and theoretical underpinnings of reasoning in Large Language Models (LLMs). The course is designed for students seeking to understand what can be formally proven about the capabilities and limitations of transformer-based models. We will focus on "hard facts" derived from complexity theory, learning theory, and optimization, treating LLMs not as black boxes but as computational systems amenable to formal analysis.
 
-The course is structured as a research seminar. The initial weeks will consist of instructor-led lectures to establish a shared theoretical foundation. The remainder of the course will be driven by student-led presentations and discussions of seminal and recent research papers. The goal is to cultivate a deep, formal understanding of what makes LLMs reason and where they fail.
+The course is structured as a research seminar. 
+The initial weeks will consist of instructor-led lectures to establish a shared theoretical foundation. The remainder of the course will be driven by student-led presentations and discussions of seminal and recent research papers. The goal is to cultivate a deep, formal understanding of what makes LLMs reason and where they fail.
 
 #### Prerequisites
 

@@ -6,7 +6,8 @@ permalink: /coursework/
 
 ### Coursework and Grading
 
-This is a research-focused seminar. Evaluation is based on your active engagement with the material, your presentation of a core research paper, and a final research project.
+This is a research-focused seminar. 
+Evaluation is based on your active engagement with the material, your presentation of a core research paper, and a final research project.
 
 #### Grading Breakdown
 

@@ -6,7 +6,8 @@ permalink: /projects/
 
 ### Final Project
 
-The final project is a core component of the seminar, accounting for 50% of the final grade. It is an opportunity for you to conduct a deep, research-oriented exploration of a topic related to the course themes.
+The final project is a core component of the seminar, 
+accounting for 50% of the final grade. It is an opportunity for you to conduct a deep, research-oriented exploration of a topic related to the course themes.
 
 #### Project Scope
 
