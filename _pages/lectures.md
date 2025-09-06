@@ -4,13 +4,13 @@ title: Lectures
 permalink: /lectures/
 ---
 
-""" Lectures & Readings
+### Lectures & Readings
 
 The course is divided into two main parts. The first part consists of instructor-led lectures to establish foundational concepts. The second part is a student-led seminar where we will critically analyze key research papers.
 
 -----
 
-"""" Part I: Foundations (Instructor-Led)
+#### Part I: Foundations (Instructor-Led)
 
 **Week 1: Introduction & A Language for Transformers**
 
@@ -42,7 +42,7 @@ The course is divided into two main parts. The first part consists of instructor
 
 -----
 
-"""" Part II: Student-Led Research Seminar Readings
+#### Part II: Student-Led Research Seminar Readings
 
 Student pairs will select from the following papers for their presentations.
 
