@@ -1,4 +1,4 @@
-# mltheorycourse.github.io
+# mathforllms25.github.io
 
 Where is my stuff?
 
