@@ -2,16 +2,15 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Homepage of the course CMPUT 654: Theoretical Foundations of Machine Learning."
+description: "Homepage of the course CMPUT 653: Mathematical Foundations for Reasoning in Large Language Models"
 permalink: /
 ---
 # Welcome
 
 
-This is the homepage of the course: **Theoretical Foundations of Machine Learning** taught by [Csaba Szepesv&aacute;ri](https://sites.ualberta.ca/~szepesva/) at the [University of Alberta](https://www.ualberta.ca/).
+This is the homepage of the course: **Mathematical Foundations for Reasoning in Large Language Models** taught by [Csaba Szepesv&aacute;ri](https://sites.ualberta.ca/~szepesva/) at the [University of Alberta](https://www.ualberta.ca/) in the fall of 2025.
 
-Additional information and resources can be accessed from the sidepane on the left. The main website pages are under the heading **PAGES** and the course notes for this year are organized under the heading **LECTURE NOTES**.
-The course notes from previous years are in the headings below. 
+Additional information and resources can be accessed from the sidepane on the left. 
 
 <table height="100%" width="100%">
     <tr>

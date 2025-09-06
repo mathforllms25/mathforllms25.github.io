@@ -1,34 +1,65 @@
 ---
-layout: default
+layout: page
 title: Lectures
-nav_order: 3
+permalink: /lectures/
 ---
 
-# Recorded lectures and scribes
-<!-- We will post the recorded lectures [here](https://www.youtube.com/playlist?list=PLQCZ7_TRKVIx6_UVxwUBFca3cDnl9DrNW). -->
+""" Lectures & Readings
 
-| #  | Date        | Lecture Videos | Scribes | Status |
-|----|-------------|----------------|---------|--------|
-| 1. | Sept 5, 2023| [Introduction](https://www.youtube.com/watch?v=arbGdCqn2Io) |[pdf](/documents/scribes/fall_2024/lec01.pdf) | V0.5 |
-| 2. | Sept 7, 2023| [Concentration of Measure](https://www.youtube.com/watch?v=TBnSm-vYTPs)|[pdf](/documents/scribes/fall_2024/lec02.pdf) | V0.1 |
-| 3. | Sept 12, 2023| [Measure concentration: MGFs, SG, Hoeffding](https://www.youtube.com/watch?v=S0aY_0SY-WA)|[pdf](/documents/scribes/fall_2024/lec03.pdf) | V0.1 |
-| 4. | Sept 14, 2023| [Chernoff/Concentration, PAC-learning](https://www.youtube.com/watch?v=GzkrMYkHxaA&t=2236s)|[pdf](/documents/scribes/fall_2024/lec04.pdf) | V0.1 |
-| 5. | Sept 19, 2023| [ERMs and Learning the AND Class](https://www.youtube.com/watch?v=c9rN8eBjS3k)|[pdf](/documents/scribes/fall_2024/lec05.pdf) | V0.1 |
-| 6. | Sept 21, 2023| [Small Risk Bound, Empirical Processes, Lower Bracketing](https://www.youtube.com/watch?v=2hfHwMX__2k)|[pdf](/documents/scribes/fall_2024/lec06.pdf) | V0.1 |
-| 7. | Sept 26, 2023| [Lower Bracketing Cover for Linear Threshold Functions and Variance Classes](https://youtu.be/TNPwFhxjHXM)|[pdf](/documents/scribes/fall_2024/lec07.pdf) | V0.5 |
-| 8. | Sept 28, 2023| [Tsybakov, Uniform Bernstein](https://youtu.be/z1oW05KzshM)|[pdf](/documents/scribes/fall_2024/lec08.pdf) | V1.0 |
-| 9. | Oct 3, 2023| [Symmetrization Lemma](https://youtu.be/G5BBy9r2vF4)|[pdf](/documents/scribes/fall_2024/lec09.pdf) | V0.1 |
-| 10. | Oct 5, 2023| [Empirical Covering Numbers](https://youtu.be/wWv4OVYhV5U)|[pdf](/documents/scribes/fall_2024/lec10.pdf) | V0.1 |
-| 11. | Oct 10, 2023| [Empirical Covering Numbers](https://youtu.be/x9Dz7GwrE9g)|[pdf](/documents/scribes/fall_2024/lec11.pdf) | V0.1 |
-| 12. | Oct 12, 2023| [VC Dimension](https://youtu.be/ZEAsFMYaKYI)|[pdf](/documents/scribes/fall_2024/lec12.pdf) | V010 |
-| 13. | Oct 17, 2023| [Packing & Covering Numbers](https://youtu.be/T86QA3JiQlg)|[pdf](/documents/scribes/fall_2024/lec13.pdf) | V0.1 |
-| 14. | Oct 19, 2023| [Covering Number Estimates](https://youtu.be/8lrO6HAyhB4)|[pdf](/documents/scribes/fall_2024/lec14.pdf) | V0.1 |
-| 15. | Oct 24, 2023| [Rademacher Complexity](https://youtu.be/90k5cs7ZSDc)|[pdf](/documents/scribes/fall_2024/lec15.pdf) | V0.1 |
-| 16. | Oct 26, 2023| [Rademacher Complexity and Chaining](https://youtu.be/BeP8z_kpOH0)|[pdf](/documents/scribes/fall_2024/lec16.pdf) | V0.1 |
-| 17. | Oct 31, 2023| [Stability Analysis](https://youtu.be/iKbuZdbwHKk)|[pdf](/documents/scribes/fall_2024/lec17.pdf) | V0.1 |
-| 18. | Nov 2, 2023| [Stability Analysis](https://youtu.be/5wwjt-MSNGI)|[pdf](/documents/scribes/fall_2024/lec18.pdf) | V0.0 |
-| 19. | Nov 9, 2023| [Model Selection](https://youtu.be/A_Ut1Q-RN2U)|[pdf](/documents/scribes/fall_2024/lec19.pdf) | V0.1 |
-| 20. | Nov 21, 2023| [Kernel Methods](https://youtu.be/XSdE7t-VFfI)|[pdf](/documents/scribes/fall_2024/lec20.pdf) | V0.1 |
-| 21. | Nov 23, 2023| [Kernel Methods](https://youtu.be/C55h4gHKoOQ)|[pdf](/documents/scribes/fall_2024/lec21.pdf) | V0.1 |
-| 22. | Nov 28, 2023| [Neural Neworks](https://youtu.be/q95TH451-lo)|[pdf](/documents/scribes/fall_2024/lec22.pdf) | V0.1 |
-| 23. | Nov 30, 2023| [Neural Neworks](https://youtu.be/ARl-ZtlUes8)|[pdf](/documents/scribes/fall_2024/lec23.pdf) | V0.0 |
+The course is divided into two main parts. The first part consists of instructor-led lectures to establish foundational concepts. The second part is a student-led seminar where we will critically analyze key research papers.
+
+-----
+
+"""" Part I: Foundations (Instructor-Led)
+
+**Week 1: Introduction & A Language for Transformers**
+
+  * *Topics:* Course overview; The Transformer Architecture; Modeling transformer computation with the RASP (Restricted Access Sequence Processing) language.
+  * *Readings:*
+      * "Attention Is All You Need" (Vaswani et al., 2017) [[Link](https://arxiv.org/abs/1706.03762)]
+      * "Thinking Like Transformers" (Weiss et al., 2021) [[Link](https://arxiv.org/abs/2106.06981)]
+
+**Week 2: The Limits of Computation**
+
+  * *Topics:* Computational Universality of Transformers with scaffolding; The Transformer as a circuit and its relation to the complexity class TC0.
+  * *Readings:*
+      * "Memory Augmented Large Language Models are Computationally Universal" (Schuurmans, 2023) [[Link](https://arxiv.org/abs/2301.04589)]
+      * "Autoregressive Large Language Models are Computationally Universal" (Schuurmans et al., 2024) [[Link](https://arxiv.org/abs/2410.03170)]
+      * "Saturated Transformers are Constant-Depth Threshold Circuits" (Merrill et al., 2022) [[Link](https://aclanthology.org/2022.tacl-1.49/)]
+
+**Week 3: Theories of Learnability**
+
+  * *Topics:* Formal learnability of natural language (Gold's paradigm); Learnability in the context of modern generative models.
+  * *Readings:*
+      * "Learning theory and natural language" (Osherson, Stob, & Weinstein, 1984) [[Link](https://doi.org/10.1016/0010-0277(84)90040-4)]
+      * "Language Generation in the Limit" (Kleinberg & Mullainathan, 2024) [[Link](https://openreview.net/forum?id=FGTDe6EA0B)]
+
+**Week 4: The Limits of Statistical Learning**
+
+  * *Topics:* Why exact learning is necessary for general intelligence; The fundamental misalignment between statistical learning and sound reasoning.
+  * *Readings:*
+      * "Beyond Statistical Learning: Exact Learning Is Essential for General Intelligence" (György, Lattimore, Lazić, Szepesvári, 2025) [[Link](https://arxiv.org/abs/2506.23908)]
+
+-----
+
+"""" Part II: Student-Led Research Seminar Readings
+
+Student pairs will select from the following papers for their presentations.
+
+  * **Theme: Hardness & Limitations**
+
+      * "Hardness of Learning Fixed Parities with Neural Networks" (Shoshani & Shamir, 2025)
+      * "On Limitations of the Transformer Architecture" (Peng, Narayanan, & Papadimitriou, 2024)
+      * "Frontier LLMs Still Struggle with Simple Reasoning Tasks" (Malek, Ge, Lazic, Jin, György, Szepesvári, 2025)
+
+  * **Theme: Generalization**
+
+      * "Understanding Generalization in Transformers: Error Bounds and Benign Overfitting" (Li et al., 2025)
+      * "What Algorithms can Transformers Learn? A Study in Length Generalization" (Zhou et al., 2024)
+      * "Universal Length Generalization with Turing Programs" (Hou et al., 2024)
+
+  * **Theme: Algorithmic Solutions**
+
+      * "From Reasoning to Super-Intelligence: A Search-Theoretic Perspective" (Shalev-Shwartz & Shashua, 2025)
+      * "Learning Compositional Functions with Transformers from Easy-to-Hard Data" (Wang et al., 2025)
+      * "Learning to Add, Multiply, and Execute Algorithmic Instructions Exactly with Neural Networks" (Frye et al., 2025)
