@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Fnds_LLMs
+title: MathFoRLLMs
 email: mathforllms@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Website of the course CMPUT 653: Mathematical Foundations for Reasoning in Large Language Models.
@@ -86,7 +86,7 @@ heading_anchors: false
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2025 MathForReasoningInLLMs."
+footer_content: "Copyright &copy; 2025 MathFoRLLMs."
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
@@ -96,6 +96,6 @@ last_edit_time_format: "%b %e %Y" # uses ruby's time format: https://ruby-doc.or
 disqus:
     # Leave shortname blank to disable comments site-wide.
     # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
-    shortname: mltheory
+    shortname: MathFoRLLMs
 
 color_scheme: custom_color_scheme
