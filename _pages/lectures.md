@@ -28,6 +28,7 @@ The course is divided into two main parts. The first part consists of instructor
 **Week 3: Computational Limits of Transformers**
   * *Topics:* Computational Universality of Transformers with scaffolding; The Transformer as a circuit and its relation to the complexity class TC0.
   * *Readings:*
+      * "Autoregressive Large Language Models are Computationally Universal" (Schuurmans et al., 2025) [[Link](https://arxiv.org/abs/2410.03170)]
       * "Memory Augmented Large Language Models are Computationally Universal" (Schuurmans, 2023) [[Link](https://arxiv.org/abs/2301.04589)]
       * "Saturated Transformers are Constant-Depth Threshold Circuits" (Merrill et al., 2022) [[Link](https://aclanthology.org/2022.tacl-1.49/)]
 
