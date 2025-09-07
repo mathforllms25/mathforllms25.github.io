@@ -6,8 +6,7 @@ permalink: /projects/
 
 ### Final Project
 
-The final project is a core component of the seminar, 
-accounting for 50% of the final grade. It is an opportunity for you to conduct a deep, research-oriented exploration of a topic related to the course themes.
+The final project is a core component of the seminar, accounting for 50% of the final grade. It is an opportunity for you to conduct a deep, research-oriented exploration of a topic related to the course themes.
 
 #### Project Scope
 
@@ -19,6 +18,6 @@ Your project can take one of several forms:
 
 #### Deliverables
 
-1.  **Project Proposal (Due Week 7):** A 1-page summary of your chosen topic and planned approach.
+1.  **Project Proposal (Due Week 8):** A 1-page summary of your chosen topic and planned approach.
 2.  **Final Presentation (Weeks 12-14):** A short presentation to the class summarizing your project's key findings or arguments.
 3.  **Written Report (Due Dec 8):** A 6-8 page paper in a standard conference format detailing your project.
