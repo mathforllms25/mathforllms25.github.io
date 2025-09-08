@@ -38,9 +38,11 @@ The course is divided into two main parts. The first part consists of instructor
       * "Learning theory and natural language" (Osherson, Stob, & Weinstein, 1984) [[Link](https://doi.org/10.1016/0010-0277(84)90040-4)]
       * "Density Measures for Language Generation" (Kleinberg, & Wei, 2025) [[Link](https://arxiv.org/abs/2504.14370)]
       * "Language Generation in the Limit" (Kleinberg & Mullainathan, 2024) [[Link](https://openreview.net/forum?id=FGTDe6EA0B)]
-      * "On the Learnability of Out-of-Distribution Languages" (Suzgun, Wallace, & Koyejo, 2024) [[Link](https://arxiv.org/abs/2410.13714)]
+      * "Generation through the lens of learning theory" (Li, Raman, & Tewari, 2024) [[Link](https://arxiv.org/abs/2410.13714)]
+      * "On Union-Closedness of Language Generation" (Hanneke,  Karbasi,  Mehrotra & Velegkas, 2025) [[Link](https://arxiv.org/abs/2506.18642)]
+      * "Language Generation in the Limit: Noise, Loss, and Feedback" (Bai, Panigrahi, & Zhang, 2025) [[Link](https://arxiv.org/abs/2507.15319)]
 
-**Week 5: From Reasoning to Exact Learning**
+**Week 5 (short): From Reasoning to Exact Learning**
   * *Topics:* The fundamental misalignment between statistical learning and sound reasoning; Why exact learning is essential for general intelligence; A case study in learning exact algorithmic instructions.
   * *Readings:*
       * "Beyond Statistical Learning: Exact Learning Is Essential for General Intelligence" (György, Lattimore, Lazić, & Szepesvári, 2025) [[Link](https://arxiv.org/abs/2506.23908)]
@@ -61,14 +63,17 @@ Student pairs will select from the following papers for their presentations, beg
       * "Learning Compositional Functions with Transformers from Easy-to-Hard Data" (Wang et al., 2025) [[Link](https://arxiv.org/abs/2505.23683)]
       * "A Theory of Learning with Autoregressive Chain of Thought" (Joshi et al., 2025) [[Link](https://arxiv.org/abs/2503.07932)]
       * "Sub-Task Decomposition Enables Learning in Sequence to Sequence Tasks" (Wies, Levine, & Shashua, 2022) [[Link](https://arxiv.org/abs/2204.02892)]
+      * "How Transformers Learn Causal Structure with Gradient Descent" (Nichani,  Damian, & Lee 2024) [[Link](https://arxiv.org/abs/2402.14735)]
+
 
   * **Theme 2: Hardness, Limitations & Trade-offs**
       * "Hardness of Learning Fixed Parities with Neural Networks" (Shoshani & Shamir, 2025) [[Link](https://arxiv.org/abs/2501.00817)]
       * "How Far Can Transformers Reason? The Globality Barrier and Inductive Scratchpad" (Abbe et al., 2024) [[Link](https://arxiv.org/abs/2406.06467)]
       * "Theoretical Limitations of Multi-Layer Transformer" (Chen, Peng, & Wu, 2024) [[Link](https://arxiv.org/abs/2412.02975)]
-      * "Computational-Statistical Tradeoffs at the Next-Token Prediction Barrier" (Rohatgi et al., 2025) [[Link](https://arxiv.org/abs/2502.12465)]
+      * "Computational-Statistical Tradeoffs at the Next-Token Prediction Barrier: Autoregressive and Imitation Learning under Misspecification." (Rohatgi et al., 2025) [[Link](https://arxiv.org/abs/2502.12465)]
       * "Trade-Offs in Data Memorization via Strong Data Processing Inequalities" (Feldman, Kornowski, & Lyu, 2025) [[Link](https://arxiv.org/abs/2506.01855)]
       * "Why Cannot Large Language Models Ever Make True Correct Reasoning?" (Cheng, 2025) [[Link](https://arxiv.org/abs/2508.10265)]
+      * "On Limitations of the Transformer Architecture" (Binghui Peng, Srini Narayanan, Christos Papadimitriou 2024) [[Link](https://arxiv.org/abs/2402.08164)]
 
   * **Theme 3: Generalization & Robustness**
       * "Understanding the Failure Modes of Out-of-Distribution Generalization" (Nagarajan, Andreassen, & Neyshabur, 2020) [[Link](https://arxiv.org/abs/2010.15775)]
@@ -90,7 +95,7 @@ This section contains materials for context, including historical perspectives, 
   * **Historical & Philosophical Context**
       * "Connectionism and Cognitive Architecture: A Critical Analysis" (Fodor & Pylyshyn, 1988) 
       * "Linguistics and Natural Logic" (Lakoff, 1970) [[Link](https://doi.org/10.1007/bf00413602)]
-      * "Mathematics, Word Problems, Common Sense, and Artificial Intelligence" (Davis, 2024) 
+      * "Mathematics, Word Problems, Common Sense, and Artificial Intelligence" (Davis, 2024) [[Link](https://arxiv.org/abs/2301.09723)]
 
   * **Key Empirical Papers & Surveys**
       * "Stop Anthropomorphizing Intermediate Tokens as Reasoning/Thinking Traces!" (Kambhampati, Stechly, & Valmeekam, 2025) [[Link](https://arxiv.org/abs/2504.09762)]
@@ -98,9 +103,13 @@ This section contains materials for context, including historical perspectives, 
       * "Universal Transformers" (Dehghani et al., 2018) [[Link](https://arxiv.org/abs/1807.03819)]
       * "REASONING GYM: Reasoning Environments for Reinforcement Learning with Verifiable Rewards" (Stojanovski et al., 2025) [[Link](https://arxiv.org/abs/2505.24760)]
       * "Comment on The Illusion of Thinking..." (Lawsen, 2025) [[Link](https://arxiv.org/abs/2506.09250)]
+      * "(How) Do Reasoning Models Reason?" (Kambhampati, Stechly & Valmeekam, 2025) [[Link](http://arxiv.org/abs/2504.09762)]
+      * "Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving" (Lin, .., Arora, Jin, et al. 2025) [[Link](http://arxiv.org/abs/2502.07640)]
+"
 
-  * **Related Theoretical Work**
-      * "Learning to Reason with Neural Networks: Generalization, Unseen Data and Boolean Measures" (Abbe et al., 2022) 
+  * **Related Theoretical/Empirical Work**
+      * "Learning to Reason with Neural Networks: Generalization, Unseen Data and Boolean Measures" (Abbe et al., 2022) [[Link](https://arxiv.org/abs/2205.13647)]
       * "The Surprising Agreement between Convex Optimization Theory and Learning-Rate Scheduling for Large Model Training" (Schaipp et al., 2025) [[Link](https://arxiv.org/abs/2501.18965)]
       * "Features at Convergence Theorem: a first-principles alternative to the Neural Feature Ansatz for how networks learn representations" (Boix-Adsera,  Mallinar, Simon, & Belkin) [[Link](https://arxiv.org/abs/2507.05644)]
       * "On the Role of Initialization in the Training of Recurrent Neural Networks" (Sutskever, Martens, Dahl, & Hinton, 2013) [[Link](https://proceedings.mlr.press/v28/sutskever13.html)]
+      * "Dynamic Chunking for End-to-End Hierarchical Sequence Modeling." (Sukjun, Hwang, Wang Brandon, and Gu Albert. 2025) [[Link](http://arxiv.org/abs/2507.07955)]
