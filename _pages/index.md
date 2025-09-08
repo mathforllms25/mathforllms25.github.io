@@ -13,6 +13,8 @@ This is the homepage of the course:
 
 Additional information and resources can be accessed from the sidepane on the left. 
 
+[Slack with a twist](https://tinyurl.com/MathForLLMs_delete_this)
+
 <table height="100%" width="100%">
     <tr>
     <td valign="middle" align="center">
