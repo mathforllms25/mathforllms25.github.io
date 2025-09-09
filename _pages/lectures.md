@@ -8,6 +8,7 @@ permalink: /lectures/
 
 The course is divided into two main parts. The first part consists of instructor-led lectures to establish foundational concepts. The second part is a student-led seminar where we will critically analyze key research papers.
 
+
 -----
 
 #### Part I: Foundations (Instructor-Led)
@@ -20,7 +21,10 @@ The course is divided into two main parts. The first part consists of instructor
       * "An Overview of Large Language Models for Statisticians" (Ji et al., 2025) [[Link](https://arxiv.org/abs/2502.17814)]
 
 **Week 2: A Language for Transformers: RASP & RASP-L**
-  * *Topics:* A detailed look at the Transformer architecture; Modeling transformer computation with the RASP language; The RASP-L conjecture for predicting length generalization.
+  * *Topics:* 
+  A detailed look at the Transformer architecture and their training including training with RL for the purpose of making them better at reasoning; 
+  Modeling transformer computation with the RASP language; 
+  The RASP-L conjecture for predicting length generalization.
   * *Readings:*
       * "Thinking Like Transformers" (Weiss, Goldberg, & Yahav, 2021) [[Link](https://arxiv.org/abs/2106.06981)]
       * "What Algorithms can Transformers Learn? A Study in Length Generalization" (Zhou et al., 2024) [[Link](https://openreview.net/forum?id=AssIuHnmHX)]
@@ -31,6 +35,8 @@ The course is divided into two main parts. The first part consists of instructor
       * "Memory Augmented Large Language Models are Computationally Universal" (Schuurmans, 2023) [[Link](https://arxiv.org/abs/2301.04589)]
       * "Autoregressive Large Language Models are Computationally Universal" (Schuurmans, Dai, & Zanini, 2024) [[Link](https://arxiv.org/abs/2410.03170)]
       * "Saturated Transformers are Constant-Depth Threshold Circuits" (Merrill, Sabharwal, & Smith, 2022) [[Link](https://aclanthology.org/2022.tacl-1.49/)]
+      * "What Formal Languages Can Transformers Express? A Survey" (Lena Strobl, William Merrill, Gail Weiss, David Chiang, Dana Angluin, 2024) [[Link](https://arxiv.org/abs/2311.00208)]
+      * "Chain of Thought Empowers Transformers to Solve Inherently Serial Problems" (Zhiyuan Li, Hong Liu, Denny Zhou, Tengyu Ma, 2024) [[Link](https://arxiv.org/abs/2402.12875)]
 
 **Week 4: Language Learnability**
   * *Topics:* Formal learnability of programming languages and its connection to natural language acquisition.
