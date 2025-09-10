@@ -111,7 +111,11 @@ This section contains materials for context, including historical perspectives, 
       * "Comment on The Illusion of Thinking..." (Lawsen, 2025) [[Link](https://arxiv.org/abs/2506.09250)]
       * "(How) Do Reasoning Models Reason?" (Kambhampati, Stechly & Valmeekam, 2025) [[Link](http://arxiv.org/abs/2504.09762)]
       * "Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving" (Lin, .., Arora, Jin, et al. 2025) [[Link](http://arxiv.org/abs/2502.07640)]
-"
+      * "Transformers Struggle to Learn to Search" (Saparov, Pawar, ..,Kim & He. 2024) [[Link](http://arxiv.org/abs/2412.04703)]
+      * "Towards an Understanding of Stepwise Inference in Transformers: A Synthetic Graph Navigation Model" (Khona, .., & Tanaka. 2024.) [[Link](http://arxiv.org/abs/2402.07757)]
+        
+
+
 
   * **Related Theoretical/Empirical Work**
       * "Learning to Reason with Neural Networks: Generalization, Unseen Data and Boolean Measures" (Abbe et al., 2022) [[Link](https://arxiv.org/abs/2205.13647)]
