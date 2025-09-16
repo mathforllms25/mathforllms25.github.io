@@ -71,6 +71,7 @@ Student pairs will select from the following papers for their presentations, beg
       * "Sub-Task Decomposition Enables Learning in Sequence to Sequence Tasks" (Wies, Levine, & Shashua, 2022) [[Link](https://arxiv.org/abs/2204.02892)]
       * "How Transformers Learn Causal Structure with Gradient Descent" (Nichani,  Damian, & Lee 2024) [[Link](https://arxiv.org/abs/2402.14735)]
       * "Unveiling Induction Heads: Provable Training Dynamics and Feature Learning in Transformers" (Siyu Chen, Heejune Sheen, Tianhao Wang, Zhuoran Yang, 2024, NeurIPS) [[Link](https://proceedings.neurips.cc/paper_files/paper/2024/hash/7aae9e3ec211249e05bd07271a6b1441-Abstract-Conference.html)]
+      * "Repeat After Me: Transformers are Better than State Space Models at Copying" (Samy Jelassi, David Brandfonbrener, Sham M. Kakade, Eran Malach, 2024) [[Link](https://arxiv.org/abs/2402.01032)]
 
 
   * **Theme 2: Hardness, Limitations & Trade-offs**
