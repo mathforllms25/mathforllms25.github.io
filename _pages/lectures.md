@@ -70,6 +70,8 @@ Student pairs will select from the following papers for their presentations, beg
       * "A Theory of Learning with Autoregressive Chain of Thought" (Joshi et al., 2025) [[Link](https://arxiv.org/abs/2503.07932)]
       * "Sub-Task Decomposition Enables Learning in Sequence to Sequence Tasks" (Wies, Levine, & Shashua, 2022) [[Link](https://arxiv.org/abs/2204.02892)]
       * "How Transformers Learn Causal Structure with Gradient Descent" (Nichani,  Damian, & Lee 2024) [[Link](https://arxiv.org/abs/2402.14735)]
+      * "Unveiling Induction Heads: Provable Training Dynamics and Feature Learning in Transformers" (Siyu Chen, Heejune Sheen, Tianhao Wang, Zhuoran Yang, 2024, NeurIPS) [[Link](https://proceedings.neurips.cc/paper_files/paper/2024/hash/7aae9e3ec211249e05bd07271a6b1441-Abstract-Conference.html)]
+      * "Repeat After Me: Transformers are Better than State Space Models at Copying" (Samy Jelassi, David Brandfonbrener, Sham M. Kakade, Eran Malach, 2024) [[Link](https://arxiv.org/abs/2402.01032)]
 
 
   * **Theme 2: Hardness, Limitations & Trade-offs**
@@ -112,7 +114,12 @@ This section contains materials for context, including historical perspectives, 
       * "Comment on The Illusion of Thinking..." (Lawsen, 2025) [[Link](https://arxiv.org/abs/2506.09250)]
       * "(How) Do Reasoning Models Reason?" (Kambhampati, Stechly & Valmeekam, 2025) [[Link](http://arxiv.org/abs/2504.09762)]
       * "Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving" (Lin, .., Arora, Jin, et al. 2025) [[Link](http://arxiv.org/abs/2502.07640)]
-"
+      * "Transformers Struggle to Learn to Search" (Saparov, Pawar, ..,Kim & He. 2024) [[Link](http://arxiv.org/abs/2412.04703)]
+      * "Towards an Understanding of Stepwise Inference in Transformers: A Synthetic Graph Navigation Model" (Khona, .., & Tanaka. 2024) [[Link](http://arxiv.org/abs/2402.07757)]
+      * "General Intelligence Requires Reward-based Pretraining" (Han,  Pari, Gershman & Agrawal, 2025) [[Link](https://arxiv.org/abs/2502.19402)
+        
+
+
 
   * **Related Theoretical/Empirical Work**
       * "Learning to Reason with Neural Networks: Generalization, Unseen Data and Boolean Measures" (Abbe et al., 2022) [[Link](https://arxiv.org/abs/2205.13647)]
