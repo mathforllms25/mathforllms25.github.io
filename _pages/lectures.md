@@ -80,6 +80,7 @@ Student pairs will select from the following papers for their presentations, beg
       * "Trade-Offs in Data Memorization via Strong Data Processing Inequalities" (Feldman, Kornowski, & Lyu, 2025) [[Link](https://arxiv.org/abs/2506.01855)]
       * "Why Cannot Large Language Models Ever Make True Correct Reasoning?" (Cheng, 2025) [[Link](https://arxiv.org/abs/2508.10265)]
       * "On Limitations of the Transformer Architecture" (Binghui Peng, Srini Narayanan, Christos Papadimitriou 2024) [[Link](https://arxiv.org/abs/2402.08164)]
+      * "Quantitative Bounds for Length Generalization in Transformers" (Zachary Izzo, Eshaan Nichani, Jason D. Lee, 2025) [[Link](https://openreview.net/forum?id=DgGPgVLrRX)]
 
   * **Theme 3: Generalization & Robustness**
       * "Understanding the Failure Modes of Out-of-Distribution Generalization" (Nagarajan, Andreassen, & Neyshabur, 2020) [[Link](https://arxiv.org/abs/2010.15775)]
