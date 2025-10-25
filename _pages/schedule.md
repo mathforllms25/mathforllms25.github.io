@@ -13,8 +13,8 @@ permalink: /schedule/
 | 3 | Sep 16, 18 | I. Foundations | **Computational Limits of Transformers** |
 | 4 | Sep 23, 25 | I. Foundations | **Language Learnability** |
 | 5 | Sep 30, Oct 2 | I. Foundations | **No Class (Sep 30)**; **From Reasoning to Exact Learning** |
-| 6 | Oct 7, 9 | II. Seminar | **Student Presentations Begin** |
-| 7 | Oct 14, 16 | II. Seminar | Student Presentations |
+| 6 | Oct 7, 9 | II. Seminar | **Exact Learning Lower Bound/Learning to Execute Instructions** |
+| 7 | Oct 14, 16 | II. Seminar | **Student Presentations Begin** |
 | 8 | Oct 21, 23 | II. Seminar | Student Presentations; **Project Proposals Due** |
 | 9 | Oct 28, 30 | II. Seminar | Student Presentations |
 | 10 | Nov 4, 6 | II. Seminar | Student Presentations |
