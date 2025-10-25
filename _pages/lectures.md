@@ -62,7 +62,7 @@ Student pairs will select from the following papers for their presentations, beg
 
   * **Theme 1: Provable Reasoning & Algorithmic Solutions**
       * "From Reasoning to Super-Intelligence: A Search-Theoretic Perspective" (Shalev-Shwartz & Shashua, 2025) [[Link](https://arxiv.org/abs/2507.15865)]
-      * "The Expressive Power of Transformers with Chain of Thought" (Feng, Li, & Ma, 2024) [[Link](https://arxiv.org/abs/2402.08164)]
+      * "The Expressive Power of Transformers with Chain of Thought" (Feng, Li, & Ma, 2024) [[Link](https://arxiv.org/abs/2310.07923)]
       * "Transformers Provably Solve Parity Efficiently with Chain of Thought" (Kim & Suzuki, 2024) [[Link](https://arxiv.org/abs/2410.08633)]
       * "Multi-Head Transformers Provably Learn Symbolic Multi-Step Reasoning via Gradient Descent" (Yang, Huang, Liang, & Chi, 2025) [[Link](https://arxiv.org/abs/2508.08222)]
       * "Metastable Dynamics of Chain-of-Thought Reasoning: Provable Benefits of Search, RL and Distillation" (Kim, Wu, Lee, & Suzuki, 2025) [[Link](https://arxiv.org/abs/2502.01694)]
@@ -83,6 +83,7 @@ Student pairs will select from the following papers for their presentations, beg
       * "Why Cannot Large Language Models Ever Make True Correct Reasoning?" (Cheng, 2025) [[Link](https://arxiv.org/abs/2508.10265)]
       * "On Limitations of the Transformer Architecture" (Binghui Peng, Srini Narayanan, Christos Papadimitriou 2024) [[Link](https://arxiv.org/abs/2402.08164)]
       * "Quantitative Bounds for Length Generalization in Transformers" (Zachary Izzo, Eshaan Nichani, Jason D. Lee, 2025) [[Link](https://openreview.net/forum?id=DgGPgVLrRX)]
+      * "The Pitfalls of Next-token Prediction" (Gregor Bachmann, Vaishnavh Nagarajan) [[Link](https://arxiv.org/abs/2403.06963)] This is an empirical paper, but hardness is proved for the task considered in Theorem 1 of Hu et al. [[Link](https://arxiv.org/abs/2410.23506)].
 
   * **Theme 3: Generalization & Robustness**
       * "Understanding the Failure Modes of Out-of-Distribution Generalization" (Nagarajan, Andreassen, & Neyshabur, 2020) [[Link](https://arxiv.org/abs/2010.15775)]
